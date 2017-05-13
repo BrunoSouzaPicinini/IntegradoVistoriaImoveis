@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2017/05/13 15:15:55.146,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\FormUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:15:55.258,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:15:55.332,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\WebModuleUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:15:55.390,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\base64.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.414,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctionExecutor.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.430,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\json2.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.464,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\CallbackFramework.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.492,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctions.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.496,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\base64-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.500,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\json2-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.504,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctionExecutor-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.508,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\CallbackFramework-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.512,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\connection.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.535,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctionInvoker.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.539,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\css\main.css</Transaction>
+    <Transaction>2017/05/13 15:15:55.543,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\css\ServerFunctionInvoker.css</Transaction>
+    <Transaction>2017/05/13 15:15:55.548,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\templates\ReverseString.html</Transaction>
+    <Transaction>2017/05/13 15:15:55.552,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\templates\ServerFunctionInvoker.html</Transaction>
+    <Transaction>2017/05/13 15:15:55.556,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\images\collapse.png</Transaction>
+    <Transaction>2017/05/13 15:15:55.561,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\images\expand.png</Transaction>
+    <Transaction>2017/05/13 15:16:23.493,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\structure\Form.App.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\FormUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:16:23.493,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\structure\Form.App.dfm=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\FormUnit1.dfm</Transaction>
+    <Transaction>2017/05/13 15:17:21.344,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\structure\Web.Module.dfm=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\WebModuleUnit1.dfm</Transaction>
+    <Transaction>2017/05/13 15:17:21.344,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\structure\Web.Module.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\WebModuleUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:17:36.060,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\servermethods\Methods.Teste.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:17:36.060,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\servermethods\Methods.Teste.dfm=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\ServerMethodsUnit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

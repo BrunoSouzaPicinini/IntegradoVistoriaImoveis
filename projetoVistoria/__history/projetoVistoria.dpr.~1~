@@ -1,0 +1,22 @@
+program projetoVistoria;
+{$APPTYPE GUI}
+
+{$R *.dres}
+
+uses
+  Vcl.Forms,
+  Web.WebReq,
+  IdHTTPWebBrokerBridge,
+  Form.App in 'struture\Form.App.pas' {Form1},
+  Web.Module in 'struture\Web.Module.pas' {ServerMethods1: TDSServerModule},
+  Methods.Teste in 'servermethods\Methods.Teste.pas' {WebModule1: TWebModule};
+
+{$R *.res}
+
+begin
+  if WebRequestHandler <> nil then
+    WebRequestHandler.WebModuleClass := WebModuleClass;
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
