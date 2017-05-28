@@ -99,6 +99,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DesignClass>TWebModule</DesignClass>
         </DCCReference>
         <DCCReference Include="bo\Bo.Pessoa.pas"/>
+        <DCCReference Include="classes\Pessoa.pas"/>
+        <DCCReference Include="classes\BaseObject.pas"/>
+        <DCCReference Include="classes\HttpStatusCode.pas"/>
+        <DCCReference Include="classes\Item.pas"/>
+        <DCCReference Include="structure\BD.Connection.pas">
+            <Form>DataModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>
         <None Include="js\json2.js"/>

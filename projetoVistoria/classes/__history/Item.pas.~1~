@@ -13,7 +13,6 @@ type
   public
     property IdItem:Integer  read FIdItem write FIdItem;
     property Descricao:string  read FDescricao write FDescricao;
-
   end;
 
 implementation
