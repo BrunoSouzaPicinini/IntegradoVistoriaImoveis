@@ -9,8 +9,7 @@ uses
   IdHTTPWebBrokerBridge,
   Form.App in 'structure\Form.App.pas' {Form1},
   Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
-  Web.Module in 'structure\Web.Module.pas' {WebModule1: TWebModule},
-  Bo.Pessoa in 'bo\Bo.Pessoa.pas';
+  Web.Module in 'structure\Web.Module.pas' {WebModule1: TWebModule};
 
 {$R *.res}
 

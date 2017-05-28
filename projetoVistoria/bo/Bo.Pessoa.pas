@@ -1,4 +1,4 @@
-unit Bo.User;
+unit Bo.Pessoa;
 
 interface
 
