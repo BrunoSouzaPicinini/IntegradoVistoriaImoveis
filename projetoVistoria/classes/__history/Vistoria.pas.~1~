@@ -1,0 +1,10 @@
+unit Vistoria;
+
+interface
+
+uses
+ BaseObject;
+
+implementation
+
+end.

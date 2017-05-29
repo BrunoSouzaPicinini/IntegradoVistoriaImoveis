@@ -1,0 +1,10 @@
+unit Imovel;
+
+interface
+
+uses
+BaseObject;
+
+implementation
+
+end.

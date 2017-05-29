@@ -16,9 +16,7 @@ uses
   HttpStatusCode in 'classes\HttpStatusCode.pas',
   Item in 'classes\Item.pas',
   BD.Connection in 'structure\BD.Connection.pas' {DataModule1: TDataModule},
-  Vistoria in 'classes\Vistoria.pas',
-  Imovel in 'classes\Imovel.pas',
-  ItemVistoria in 'classes\ItemVistoria.pas';
+  Vistoria in 'classes\Vistoria.pas';
 
 {$R *.res}
 
