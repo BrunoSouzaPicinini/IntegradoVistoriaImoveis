@@ -3,17 +3,17 @@ object DataModule1: TDataModule1
   Height = 150
   Width = 215
   object dlPg: TFDPhysPgDriverLink
-    Left = 24
-    Top = 8
+    Left = 32
+    Top = 24
   end
   object conDatabase: TFDConnection
     Params.Strings = (
-      'Database=vistoriaImoveis'
+      'Database=aula'
       'User_Name=postgres'
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Left = 24
-    Top = 72
+    Left = 80
+    Top = 96
   end
 end
