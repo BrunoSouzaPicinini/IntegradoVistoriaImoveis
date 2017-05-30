@@ -12,11 +12,11 @@
     <Transaction>2017/05/13 15:15:55.000.512,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\connection.js</Transaction>
     <Transaction>2017/05/13 15:15:55.000.543,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\css\ServerFunctionInvoker.css</Transaction>
     <Transaction>2017/05/13 15:15:55.000.390,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\base64.js</Transaction>
-    <Transaction>2017/05/13 15:15:55.000.146,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\FormUnit1.pas</Transaction>
+    <Transaction>2017/05/13 15:15:55.000.496,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\base64-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.000.556,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\images\collapse.png</Transaction>
     <Transaction>2017/05/13 15:15:55.000.535,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctionInvoker.js</Transaction>
     <Transaction>2017/05/13 15:15:55.000.492,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\ServerFunctions.js</Transaction>
-    <Transaction>2017/05/13 15:15:55.000.556,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\images\collapse.png</Transaction>
-    <Transaction>2017/05/13 15:15:55.000.496,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\base64-min.js</Transaction>
+    <Transaction>2017/05/13 15:15:55.000.146,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\FormUnit1.pas</Transaction>
     <Transaction>2017/05/13 15:15:55.000.258,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\ServerMethodsUnit1.pas</Transaction>
     <Transaction>2017/05/13 15:15:55.000.561,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\images\expand.png</Transaction>
     <Transaction>2017/05/13 15:15:55.000.430,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\js\json2.js</Transaction>
@@ -33,8 +33,8 @@
     <Transaction>2017/05/28 11:36:17.000.718,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
     <Transaction>2017/05/28 11:36:48.000.303,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\bo\Bo.Pessoa.pas</Transaction>
     <Transaction>2017/05/28 11:37:15.000.741,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
-    <Transaction>2017/05/28 11:40:04.000.573,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\BaseObject.pas</Transaction>
     <Transaction>2017/05/28 11:40:04.000.591,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\HttpStatusCode.pas</Transaction>
+    <Transaction>2017/05/28 11:40:04.000.573,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\BaseObject.pas</Transaction>
     <Transaction>2017/05/28 11:52:06.000.222,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\Pessoa.pas</Transaction>
     <Transaction>2017/05/28 11:52:21.000.174,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
     <Transaction>2017/05/28 11:56:11.000.081,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\Item.pas</Transaction>
@@ -47,5 +47,9 @@
     <Transaction>2017/05/29 20:17:02.309,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\Imovel.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
     <Transaction>2017/05/29 20:35:43.426,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
     <Transaction>2017/05/29 20:41:40.032,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\classes\ItemVistoria.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
+    <Transaction>2017/05/29 20:59:46.326,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
+    <Transaction>2017/05/29 22:11:56.889,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\dao\Dao.Item.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
+    <Transaction>2017/05/29 22:30:59.615,=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
+    <Transaction>2017/05/29 22:31:15.875,D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\dao\Dao.Pessoa.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoria\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

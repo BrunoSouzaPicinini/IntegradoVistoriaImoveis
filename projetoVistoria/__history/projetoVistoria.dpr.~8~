@@ -19,8 +19,7 @@ uses
   Vistoria in 'classes\Vistoria.pas',
   Imovel in 'classes\Imovel.pas',
   ItemVistoria in 'classes\ItemVistoria.pas',
-  Dao.Item in 'dao\Dao.Item.pas',
-  Dao.Pessoa in 'dao\Dao.Pessoa.pas';
+  Dao.Item in 'dao\Dao.Item.pas';
 
 {$R *.res}
 

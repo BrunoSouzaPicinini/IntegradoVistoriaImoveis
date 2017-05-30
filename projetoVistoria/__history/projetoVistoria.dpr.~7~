@@ -18,9 +18,7 @@ uses
   BD.Connection in 'structure\BD.Connection.pas' {DataModule1: TDataModule},
   Vistoria in 'classes\Vistoria.pas',
   Imovel in 'classes\Imovel.pas',
-  ItemVistoria in 'classes\ItemVistoria.pas',
-  Dao.Item in 'dao\Dao.Item.pas',
-  Dao.Pessoa in 'dao\Dao.Pessoa.pas';
+  ItemVistoria in 'classes\ItemVistoria.pas';
 
 {$R *.res}
 

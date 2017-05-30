@@ -20,7 +20,7 @@ type
 
   TConnection = class
   public
-      class function getConnection(): TFDConnection;
+      class function GetConnection(): TFDConnection;
   end;
 
 var
