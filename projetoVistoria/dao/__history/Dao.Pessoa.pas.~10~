@@ -123,25 +123,12 @@ end;
 
 class function TPessoaDao.Save(APessoa: TPessoa): TPessoa;
 begin
-  if (APessoa.IdPessoa = 0) then
-  begin
-    Exit(Create(APessoa));
-  end;
-    Exit(Update(APessoa));
+
 end;
 
 class function TPessoaDao.Update(APessoa: TPessoa): TPessoa;
-var
-  Con : TFDConnection;
-  QueryString: string;
 begin
-  Con := TConnection.Create;
-  QueryString := Format(
-  'UPDATE aula.cadpessoa SET nome = ''%s'' WHERE idpessoa = %d',
-  [APessoa.Nome]);
 
-  Con.ExecSQL(QueryString);
-  Result := APessoa;
 end;
 
 end.

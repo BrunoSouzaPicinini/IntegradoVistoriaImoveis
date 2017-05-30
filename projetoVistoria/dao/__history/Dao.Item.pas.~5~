@@ -15,7 +15,7 @@ uses
     class function Read(): TObjectList<TItem>; overload;
     class function Read(AIdItem: Integer) : TItem; overload;
     class function Save(AItem : TItem): TItem;
-    class procedure Delete (AIdItem: Integer);
+    class procedure Delete (AId: Integer);
   end;
 
 implementation
@@ -40,7 +40,7 @@ begin
   Con := TConnection.getConnection;
 
   QueryString := Format(
-  'INSERT INTO aula.cadItem (descricao) VALUES ( ''%s'' ) RETURNING iditem',
+  'INSERT INTO aula.cadItem (descricao) VALUES ( ''%s'') RETURNING iditem',
   [AItem.Descricao]
   );
 
@@ -53,12 +53,12 @@ var
 begin
   Con := TConnection.getConnection;
   QueryString := Format('DELETE FROM aula.caditem WHERE iditem = %d ',
-  [AidItem]
+  [Aid]
   );
 
 end;
 
-class function TItemDao.Read(AIdItem: Integer): TItem;
+class function TItemDao.Read(AId: Integer): TItem;
 var
   Query : TFDQuery;
   QueryString : string;
@@ -66,8 +66,8 @@ begin
   Result := TItem.Create;
   Query := TFDQuery.Create(nil);
 
-  QueryString := Format('SELECT * FROM aula.caditem WHERE iditem = %d',
-  [AIdItem]
+  QueryString := Format('SELECT * FROM aula.caditem WHERE id = %d',
+  [AId]
   );
   with Query do
   begin
