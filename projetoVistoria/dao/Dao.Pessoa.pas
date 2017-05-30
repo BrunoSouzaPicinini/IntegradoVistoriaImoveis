@@ -141,7 +141,7 @@ begin
   Con := TConnection.GetConnection;
   QueryString := Format(
   'UPDATE aula.cadpessoa SET nome = ''%s'' WHERE idpessoa = %d',
-  [APessoa.Nome]);
+  [APessoa.Nome, APessoa.IdPessoa]);
 
   Con.ExecSQL(QueryString);
   Result := APessoa;

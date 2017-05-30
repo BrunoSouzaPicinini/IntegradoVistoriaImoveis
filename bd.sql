@@ -7,7 +7,7 @@ CREATE SCHEMA aula
 
 
 CREATE TABLE aula.cadImovel (
-  idImovel INT NOT NULL,
+  idImovel SERIAL,
   quadra VARCHAR(45) NULL,
   lote VARCHAR(45) NULL,
   metragemTerreno DECIMAL(12,2) NULL,
@@ -21,13 +21,13 @@ CREATE TABLE aula.cadImovel (
 
 
 CREATE TABLE IF NOT EXISTS aula.cadPessoa (
-  idPessoa INT NOT NULL,
+  idPessoa SERIAL ,
   nome VARCHAR(45) NULL,
   PRIMARY KEY (idPessoa));
 
 
 CREATE TABLE aula.movVistoria (
-  idVistoria INT NOT NULL,
+  idVistoria SERIAL,
   data DATE NULL,
   Observacao VARCHAR(45) NULL,
   idImovel INT NOT NULL,
@@ -41,12 +41,12 @@ CREATE TABLE aula.movVistoria (
     REFERENCES aula.cadPessoa (idPessoa));
 
 CREATE TABLE IF NOT EXISTS aula.cadItem (
-  idItem INT NOT NULL,
+  idItem SERIAL ,
   descricao VARCHAR(45) NULL,
   PRIMARY KEY (idItem));
   
 CREATE TABLE aula.movItensVistoria (
-  idItensVistoria INT NOT NULL,
+  idItensVistoria SERIAL,
   idImovel INT NOT NULL,
   idItem INT NOT NULL,
   observacao VARCHAR(45) NULL,
