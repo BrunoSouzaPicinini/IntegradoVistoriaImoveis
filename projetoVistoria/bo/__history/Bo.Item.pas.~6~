@@ -1,0 +1,30 @@
+unit Bo.Item;
+
+interface
+uses
+Item;
+
+type
+TItemDao = class
+  private
+  public
+    class function Create(const ADescricao : string): TItem;
+    class procedure Update(var AItem : TItem; const ADescricao: string);
+end;
+implementation
+
+{ TItemDao }
+
+class function TItemDao.Create(const ADescricao: string): TItem;
+begin
+   Result := TItem.Create;
+   Result.IdItem := 0;
+   Result.Descricao := ADescricao;
+end;
+
+class procedure TItemDao.Update(var AItem: TItem; const ADescricao: string);
+begin
+  TItem.descricao := ADescricao;
+end;
+
+end.

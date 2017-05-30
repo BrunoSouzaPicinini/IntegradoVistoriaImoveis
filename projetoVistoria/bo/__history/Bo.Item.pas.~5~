@@ -1,0 +1,16 @@
+unit Bo.Item;
+
+interface
+uses
+Item;
+
+type
+TItemDao = class
+  private
+  public
+    class function Create(const ADescricao : string): TItem;
+    class procedure Update(var AItem : TItem; const ADescricao: string);
+end;
+implementation
+
+end.

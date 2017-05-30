@@ -103,11 +103,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="dao\Dao.Item.pas"/>
         <DCCReference Include="dao\Dao.Pessoa.pas"/>
         <DCCReference Include="dao\Dao.Imovel.pas"/>
-        <DCCReference Include="servermethods\Methods.Teste.pas">
-            <Form>smTeste</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDSServerModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="classes\BaseObject.pas"/>
         <DCCReference Include="structure\BD.Connection.pas">
             <Form>dmConnection</Form>
@@ -116,6 +111,17 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="classes\HttpStatusCode.pas"/>
         <DCCReference Include="servermethods\Methods.Pessoa.pas">
             <Form>smPessoa</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="bo\Bo.Item.pas"/>
+        <DCCReference Include="servermethods\Methods.Item.pas">
+            <Form>smItem</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="servermethods\Methods.Teste.pas">
+            <Form>smTeste</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
@@ -226,13 +232,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="js\json2-min.js" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="js\base64.js" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="js\base64.js" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="js\json2-min.js" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -256,9 +262,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\projetoVistoria.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="js\ServerFunctions.js" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <RemoteName>projetoVistoria.exe</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -280,9 +286,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="js\ServerFunctions.js" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="Win32\Debug\projetoVistoria.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
+                        <RemoteName>projetoVistoria.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

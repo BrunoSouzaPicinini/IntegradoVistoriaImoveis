@@ -1,0 +1,14 @@
+unit Bo.Item;
+
+interface
+uses
+Item;
+
+type
+TItemDao = class
+  public
+  private
+end;
+implementation
+
+end.

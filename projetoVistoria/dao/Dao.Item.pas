@@ -95,7 +95,7 @@ begin
   Result := TObjectList<TItem>.Create;
   Query := TFDQuery.Create(nil);
 
-  QueryString := 'SELECT * FROM aula.item';
+  QueryString := 'SELECT * FROM aula.caditem';
 
   with Query do
   begin
