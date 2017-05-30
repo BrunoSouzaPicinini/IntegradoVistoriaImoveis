@@ -22,11 +22,14 @@ type
     DSProxyGenerator: TDSProxyGenerator;
     DSServerMetaDataProvider: TDSServerMetaDataProvider;
     dscPessoa: TDSServerClass;
+    dscItem: TDSServerClass;
 
     procedure dscTesteGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     //getClass dscPessoa
     procedure dscPessoaGetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+    procedure dscItemGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
 
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
@@ -52,9 +55,15 @@ var
 
 implementation
 
-uses Methods.Teste,Methods.Pessoa, Web.WebReq;
+uses Methods.Teste,Methods.Pessoa, Web.WebReq, Methods.Item;
 
 {$R *.dfm}
+
+procedure TWebModule1.dscItemGetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := Methods.Item.TsmItem;
+end;
 
 procedure TWebModule1.dscPessoaGetClass(DSServerClass: TDSServerClass;
   var PersistentClass: TPersistentClass);

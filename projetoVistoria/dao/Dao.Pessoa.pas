@@ -38,7 +38,6 @@ class function TPessoaDao.Create(APessoa: TPessoa): TPessoa;
 var
   Con : TFDConnection;
   QueryString : string;
-  IdPessoa: Integer;
 
 begin
   Con := TConnection.GetConnection;

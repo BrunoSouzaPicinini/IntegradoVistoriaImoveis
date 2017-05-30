@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 30/05/2017 19:49:27
+// 30/05/2017 20:50:40
 // 
 
 function DSAdmin(connectionInfo)
@@ -754,9 +754,99 @@ function TsmPessoa(connectionInfo)
   };
 }
 
+function TsmItem(connectionInfo)
+{
+  this.executor = new ServerFunctionExecutor("TsmItem",connectionInfo);
+
+  /*
+   * @param AIdItem [in] - Type on server: Integer
+   * @return result - Type on server: TJSONValue
+   */
+  this.getItem = function(AIdItem) {
+    var returnObject = this.executor.executeMethod('getItem', "GET", [AIdItem], arguments[1], true, arguments[2], arguments[3]);
+    if (arguments[1] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.AIdItem = AIdItem;
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getItem_URL = function(AIdItem) {
+    return this.executor.getMethodURL("getItem", "GET", [AIdItem], arguments[1])[0];
+  };
+
+  /*
+   * @return result - Type on server: TJSONArray
+   */
+  this.getAllItem = function() {
+    var returnObject = this.executor.executeMethod('getAllItem', "GET", [], arguments[0], true, arguments[1], arguments[2]);
+    if (arguments[0] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getAllItem_URL = function() {
+    return this.executor.getMethodURL("getAllItem", "GET", [], arguments[0])[0];
+  };
+
+  /*
+   * @param ADescricao [in] - Type on server: string
+   */
+  this.updateItem = function(ADescricao) {
+    this.executor.executeMethod('Item', "POST", [ADescricao], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.updateItem_URL = function(ADescricao) {
+    return this.executor.getMethodURL("Item", "POST", [ADescricao], arguments[1])[0];
+  };
+
+  /*
+   * @param ADescricao [in] - Type on server: string
+   * @param AIdItem [in] - Type on server: Integer
+   */
+  this.acceptPessoa = function(ADescricao, AIdItem) {
+    this.executor.executeMethod('Pessoa', "PUT", [ADescricao, AIdItem], arguments[2], false, arguments[3], arguments[4]);
+  };
+
+  this.acceptPessoa_URL = function(ADescricao, AIdItem) {
+    return this.executor.getMethodURL("Pessoa", "PUT", [ADescricao, AIdItem], arguments[2])[0];
+  };
+
+  /*
+   * @param AidItem [in] - Type on server: Integer
+   */
+  this.deleteItem = function(AidItem) {
+    this.executor.executeMethod('deleteItem', "GET", [AidItem], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.deleteItem_URL = function(AidItem) {
+    return this.executor.getMethodURL("deleteItem", "GET", [AidItem], arguments[1])[0];
+  };
+}
+
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
   "TsmTeste": ["EchoString","ReverseString"],
-  "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"]
+  "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"],
+  "TsmItem": ["getItem","getAllItem","updateItem","acceptPessoa","deleteItem"]
 };
 

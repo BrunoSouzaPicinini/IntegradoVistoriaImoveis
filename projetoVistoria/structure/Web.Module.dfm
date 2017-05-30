@@ -106,6 +106,12 @@ object WebModule1: TWebModule1
     OnGetClass = dscPessoaGetClass
     Server = DSServer
     Left = 304
-    Top = 128
+    Top = 16
+  end
+  object dscItem: TDSServerClass
+    OnGetClass = dscItemGetClass
+    Server = DSServer
+    Left = 304
+    Top = 88
   end
 end

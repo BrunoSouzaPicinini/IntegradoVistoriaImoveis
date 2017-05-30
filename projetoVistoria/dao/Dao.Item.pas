@@ -35,14 +35,14 @@ class function TItemDao.Create(AItem: TItem): TItem;
 var
   Con : TFDConnection;
   QueryString : string;
-  IdItem : Integer;
 begin
   Con := TConnection.getConnection;
 
   QueryString := Format(
-  'INSERT INTO aula.cadItem (descricao) VALUES ( ''%s'' ) RETURNING iditem',
-  [AItem.Descricao]
-  );
+  'INSERT INTO aula.caditem (descricao) VALUES ( ''%s'' ) RETURNING iditem',
+  [AItem.Descricao]);
+  AItem.IdItem := Con.ExecSQLScalar(QueryString) ;
+  Result := AItem;
 
 end;
 
@@ -51,10 +51,10 @@ var
   Con : TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
   QueryString := Format('DELETE FROM aula.caditem WHERE iditem = %d ',
-  [AidItem]
-  );
+  [AidItem]);
+  Con.ExecSQL(QueryString);
 
 end;
 
@@ -71,7 +71,7 @@ begin
   );
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -99,7 +99,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -135,10 +135,10 @@ var
   Con : TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
   QueryString := Format(
   'UPDATE aula.caditem SET descricao = ''%s'' WHERE iditem = %d',
-  [AItem.Descricao]);
+  [AItem.Descricao, AItem.IdItem]);
 
   Con.ExecSQL(QueryString);
   Result := AItem;
