@@ -103,11 +103,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="dao\Dao.Item.pas"/>
         <DCCReference Include="dao\Dao.Pessoa.pas"/>
         <DCCReference Include="dao\Dao.Imovel.pas"/>
-        <DCCReference Include="servermethods\Methods.Pessoa.pas">
-            <Form>DSServerModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDSServerModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="servermethods\Methods.Teste.pas">
             <Form>smTeste</Form>
             <FormType>dfm</FormType>
@@ -119,6 +114,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="classes\HttpStatusCode.pas"/>
+        <DCCReference Include="servermethods\Methods.Pessoa.pas">
+            <Form>smPessoa</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>
         <None Include="js\json2.js"/>

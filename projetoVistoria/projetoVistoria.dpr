@@ -18,13 +18,11 @@ uses
   Dao.Item in 'dao\Dao.Item.pas',
   Dao.Pessoa in 'dao\Dao.Pessoa.pas',
   Dao.Imovel in 'dao\Dao.Imovel.pas',
-  Methods.Pessoa in 'servermethods\Methods.Pessoa.pas' {DSServerModule1: TDSServerModule},
   Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
   BaseObject in 'classes\BaseObject.pas',
   BD.Connection in 'structure\BD.Connection.pas' {dmConnection: TDataModule},
-  HttpStatusCode in 'classes\HttpStatusCode.pas';
-
-
+  HttpStatusCode in 'classes\HttpStatusCode.pas',
+  Methods.Pessoa in 'servermethods\Methods.Pessoa.pas' {smPessoa: TDSServerModule};
 
 begin
   if WebRequestHandler <> nil then

@@ -39,12 +39,15 @@ var
   Con : TFDConnection;
   QueryString : string;
   IdPessoa: Integer;
+
 begin
   Con := TConnection.GetConnection;
 
   QueryString := Format(
-  'INSERT INTO aula.cadpessoa (nome) VALUES ( ''%s'' ) RETURNING idpessoa',
+  'INSERT INTO aula.cadpessoa (nome) VALUES (''%s'') RETURNING idpessoa',
   [APessoa.Nome]);
+  APessoa.IdPessoa := Con.ExecSQLScalar(QueryString) ;
+  Result := APessoa;
 
 end;
 
@@ -56,7 +59,7 @@ begin
   Con := TConnection.GetConnection;
   QueryString := Format('DELETE FROM aula.cadpessoa WHERE idpessoa = %d ',
   [AidPessoa]);
-
+  Con.ExecSQL(QueryString);
 end;
 
 class function TPessoaDao.Read(AIdPessoa: Integer): TPessoa;
@@ -96,7 +99,7 @@ begin
   Result := TObjectList<TPessoa>.Create;
   Query := TFDQuery.Create(nil);
 
-  QueryString := 'SELECT * FROM aula.pessoa';
+  QueryString := 'SELECT * FROM aula.cadpessoa';
 
   with Query do
   begin

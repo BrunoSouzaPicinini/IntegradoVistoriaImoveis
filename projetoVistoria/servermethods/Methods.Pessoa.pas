@@ -13,8 +13,8 @@ type
   public
     function getPessoa(AIdPessoa: Integer): TJSONValue; //GET - READ
     function getAllPessoa(): TJSONArray; //GET - READ
-    procedure createPessoa(APessoa: TPessoa ); //POST - CREATE
-    procedure updatePessoa(APessoa: TPessoa );  //PUT - UPDATE
+    procedure updatePessoa(ANome : string ); //POST - CREATE
+    procedure acceptPessoa(ANome : string; AIdPessoa : Integer );  //PUT - UPDATE
     procedure deleteUser(AIdPessoa: Integer);  //DELETE - DELETE
   end;
 
@@ -26,17 +26,14 @@ uses Dao.Pessoa, Bo.Pessoa, HttpStatusCode;
 
 { TDSServerModule }
 
-procedure TsmPessoa.createPessoa(APessoa: TPessoa);
+procedure TsmPessoa.updatePessoa(ANome : string);
 var
   Dao: TPessoaDao;
 begin
   try
     try
       Dao := TPessoaDao.Create;
-
-      TPessoaBo.Create(APessoa.nome);
-      Dao.Save(APessoa);
-
+      Dao.Save(TPessoaBo.Create(ANome));
       GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
     except
       on e : Exception do
@@ -117,13 +114,16 @@ begin
 
 end;
 
-procedure TsmPessoa.updatePessoa(APessoa: TPessoa);
+procedure TsmPessoa.acceptPessoa(ANome : string; AIdPessoa : Integer );
 var
   Dao : TPessoaDao;
+  APessoa : TPessoa;
 begin
   try
     try
       Dao := TPessoaDao.Create;
+      APessoa := Dao.Read(AIdPessoa);
+      TPessoaBo.Update(APessoa, ANome);
       Dao.Save(APessoa);
       GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
     except
@@ -134,6 +134,7 @@ begin
     end;
   finally
     Dao.Free;
+    APessoa.Free;
   end;
 
 end;

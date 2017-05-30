@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 30/05/2017 13:35:10
+// 30/05/2017 16:59:54
 // 
 
 function DSAdmin(connectionInfo)
@@ -720,17 +720,26 @@ function TsmPessoa(connectionInfo)
   };
 
   /*
-   * @param APessoa [in] - Type on server: TPessoa
+   * @param ANome [in] - Type on server: string
    */
-  this.createPessoa = function(APessoa) {
-    this.executor.executeMethod('"createPessoa"', "POST", [APessoa], arguments[1], false, arguments[2], arguments[3]);
+  this.updatePessoa = function(ANome) {
+    this.executor.executeMethod('Pessoa', "POST", [ANome], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.updatePessoa_URL = function(ANome) {
+    return this.executor.getMethodURL("Pessoa", "POST", [ANome], arguments[1])[0];
   };
 
   /*
-   * @param APessoa [in] - Type on server: TPessoa
+   * @param ANome [in] - Type on server: string
+   * @param AIdPessoa [in] - Type on server: Integer
    */
-  this.updatePessoa = function(APessoa) {
-    this.executor.executeMethod('Pessoa', "POST", [APessoa], arguments[1], false, arguments[2], arguments[3]);
+  this.acceptPessoa = function(ANome, AIdPessoa) {
+    this.executor.executeMethod('Pessoa', "PUT", [ANome, AIdPessoa], arguments[2], false, arguments[3], arguments[4]);
+  };
+
+  this.acceptPessoa_URL = function(ANome, AIdPessoa) {
+    return this.executor.getMethodURL("Pessoa", "PUT", [ANome, AIdPessoa], arguments[2])[0];
   };
 
   /*
@@ -748,6 +757,6 @@ function TsmPessoa(connectionInfo)
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
   "TsmTeste": ["EchoString","ReverseString"],
-  "TsmPessoa": ["getPessoa","getAllPessoa","createPessoa","updatePessoa","deleteUser"]
+  "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"]
 };
 
