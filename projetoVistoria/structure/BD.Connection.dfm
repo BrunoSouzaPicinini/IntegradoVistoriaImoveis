@@ -1,29 +1,19 @@
-object DataModule1: TDataModule1
-  Left = 0
-  Top = 0
-  ClientHeight = 111
-  ClientWidth = 199
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
+object dmConnection: TdmConnection
   OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
-  object dlPg: TFDPhysPgDriverLink
-    Left = 24
-    Top = 8
-  end
+  Height = 150
+  Width = 215
   object conDatabase: TFDConnection
     Params.Strings = (
-      'Database=vistoriaImoveis'
+      'Database=postgres'
       'User_Name=postgres'
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Left = 24
-    Top = 72
+    Left = 40
+    Top = 64
+  end
+  object dlPg: TFDPhysPgDriverLink
+    Left = 40
+    Top = 8
   end
 end

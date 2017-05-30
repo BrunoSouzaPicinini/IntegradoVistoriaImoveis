@@ -46,7 +46,7 @@ begin
 
 end;
 
-class procedure TItemDao.Delete(AId: Integer);
+class procedure TItemDao.Delete(AIdItem: Integer);
 var
   Con : TFDConnection;
   QueryString: string;
@@ -135,7 +135,7 @@ var
   Con : TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.Create;
+  Con := TConnection.getConnection;
   QueryString := Format(
   'UPDATE aula.caditem SET descricao = ''%s'' WHERE iditem = %d',
   [AItem.Descricao]);

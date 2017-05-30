@@ -89,11 +89,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="servermethods\Methods.Teste.pas">
-            <Form>smTeste</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDSServerModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="structure\Web.Module.pas">
             <Form>WebModule1</Form>
             <FormType>dfm</FormType>
@@ -101,19 +96,29 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DCCReference>
         <DCCReference Include="bo\Bo.Pessoa.pas"/>
         <DCCReference Include="classes\Pessoa.pas"/>
-        <DCCReference Include="classes\BaseObject.pas"/>
-        <DCCReference Include="classes\HttpStatusCode.pas"/>
         <DCCReference Include="classes\Item.pas"/>
-        <DCCReference Include="structure\BD.Connection.pas">
-            <Form>DataModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="classes\Vistoria.pas"/>
         <DCCReference Include="classes\Imovel.pas"/>
         <DCCReference Include="classes\ItemVistoria.pas"/>
         <DCCReference Include="dao\Dao.Item.pas"/>
         <DCCReference Include="dao\Dao.Pessoa.pas"/>
+        <DCCReference Include="dao\Dao.Imovel.pas"/>
+        <DCCReference Include="servermethods\Methods.Pessoa.pas">
+            <Form>DSServerModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="servermethods\Methods.Teste.pas">
+            <Form>smTeste</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="classes\BaseObject.pas"/>
+        <DCCReference Include="structure\BD.Connection.pas">
+            <Form>dmConnection</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="classes\HttpStatusCode.pas"/>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>
         <None Include="js\json2.js"/>

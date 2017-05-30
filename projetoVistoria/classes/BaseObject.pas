@@ -4,7 +4,7 @@ interface
 
 uses DBXJSONReflect, System.SysUtils, Data.DBXJSON, System.Generics.Collections,
   System.TypInfo, System.Rtti, System.Classes, System.StrUtils, Data.DBXCommonResStrs,
-  Data.DBXPlatform, JclDebug;
+  Data.DBXPlatform,System.JSON;
 
 type
   TBaseObject = class(TPersistent)

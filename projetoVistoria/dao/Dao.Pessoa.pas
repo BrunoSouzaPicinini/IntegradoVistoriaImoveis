@@ -40,7 +40,7 @@ var
   QueryString : string;
   IdPessoa: Integer;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
 
   QueryString := Format(
   'INSERT INTO aula.cadpessoa (nome) VALUES ( ''%s'' ) RETURNING idpessoa',
@@ -53,7 +53,7 @@ var
   Con : TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
   QueryString := Format('DELETE FROM aula.cadpessoa WHERE idpessoa = %d ',
   [AidPessoa]);
 
@@ -72,7 +72,7 @@ begin
   );
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -100,7 +100,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -135,7 +135,7 @@ var
   Con : TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.Create;
+  Con := TConnection.GetConnection;
   QueryString := Format(
   'UPDATE aula.cadpessoa SET nome = ''%s'' WHERE idpessoa = %d',
   [APessoa.Nome]);

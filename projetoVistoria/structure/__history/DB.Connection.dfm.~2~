@@ -1,0 +1,20 @@
+object dmConnection: TdmConnection
+  OldCreateOrder = False
+  Height = 201
+  Width = 211
+  object conDatabase: TFDConnection
+    Params.Strings = (
+      'Database=postgres'
+      'User_Name=postgres'
+      'Password=root'
+      'Server=localhost'
+      'DriverID=PG')
+    LoginPrompt = False
+    Left = 88
+    Top = 32
+  end
+  object dlPg: TFDPhysPgDriverLink
+    Left = 88
+    Top = 104
+  end
+end

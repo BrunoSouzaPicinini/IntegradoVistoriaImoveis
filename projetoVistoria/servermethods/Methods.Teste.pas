@@ -2,7 +2,7 @@ unit Methods.Teste;
 
 interface
 
-uses System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth;
+uses System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth,Datasnap.DSProviderDataModuleAdapter;
 
 type
   TsmTeste = class(TDSServerModule)

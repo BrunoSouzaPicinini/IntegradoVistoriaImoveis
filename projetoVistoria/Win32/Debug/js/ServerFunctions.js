@@ -1,5 +1,6 @@
-// 
+﻿// 
 // Created by the DataSnap proxy generator.
+// 30/05/2017 13:35:10
 // 
 
 function DSAdmin(connectionInfo)
@@ -615,16 +616,16 @@ function DSAdmin(connectionInfo)
   };
 }
 
-function TServerMethods1(connectionInfo)
+function TsmTeste(connectionInfo)
 {
-  this.executor = new ServerFunctionExecutor("TServerMethods1",connectionInfo);
+  this.executor = new ServerFunctionExecutor("TsmTeste",connectionInfo);
 
   /*
    * @param Value [in] - Type on server: string
    * @return result - Type on server: string
    */
   this.EchoString = function(Value) {
-    var returnObject = this.executor.executeMethod("EchoString", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    var returnObject = this.executor.executeMethod('EchoString', "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
     if (arguments[1] == null) {
       if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
         var resultArray = returnObject.result;
@@ -646,7 +647,7 @@ function TServerMethods1(connectionInfo)
    * @return result - Type on server: string
    */
   this.ReverseString = function(Value) {
-    var returnObject = this.executor.executeMethod("ReverseString", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    var returnObject = this.executor.executeMethod('ReverseString', "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
     if (arguments[1] == null) {
       if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
         var resultArray = returnObject.result;
@@ -664,8 +665,89 @@ function TServerMethods1(connectionInfo)
   };
 }
 
+function TsmPessoa(connectionInfo)
+{
+  this.executor = new ServerFunctionExecutor("TsmPessoa",connectionInfo);
+
+  /*
+   * @param AIdPessoa [in] - Type on server: Integer
+   * @return result - Type on server: TJSONValue
+   */
+  this.getPessoa = function(AIdPessoa) {
+    var returnObject = this.executor.executeMethod('getPessoa', "GET", [AIdPessoa], arguments[1], true, arguments[2], arguments[3]);
+    if (arguments[1] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.AIdPessoa = AIdPessoa;
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getPessoa_URL = function(AIdPessoa) {
+    return this.executor.getMethodURL("getPessoa", "GET", [AIdPessoa], arguments[1])[0];
+  };
+
+  /*
+   * @return result - Type on server: TJSONArray
+   */
+  this.getAllPessoa = function() {
+    var returnObject = this.executor.executeMethod('getAllPessoa', "GET", [], arguments[0], true, arguments[1], arguments[2]);
+    if (arguments[0] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getAllPessoa_URL = function() {
+    return this.executor.getMethodURL("getAllPessoa", "GET", [], arguments[0])[0];
+  };
+
+  /*
+   * @param APessoa [in] - Type on server: TPessoa
+   */
+  this.createPessoa = function(APessoa) {
+    this.executor.executeMethod('"createPessoa"', "POST", [APessoa], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  /*
+   * @param APessoa [in] - Type on server: TPessoa
+   */
+  this.updatePessoa = function(APessoa) {
+    this.executor.executeMethod('Pessoa', "POST", [APessoa], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  /*
+   * @param AIdPessoa [in] - Type on server: Integer
+   */
+  this.deleteUser = function(AIdPessoa) {
+    this.executor.executeMethod('deleteUser', "GET", [AIdPessoa], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.deleteUser_URL = function(AIdPessoa) {
+    return this.executor.getMethodURL("deleteUser", "GET", [AIdPessoa], arguments[1])[0];
+  };
+}
+
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
-  "TServerMethods1": ["EchoString","ReverseString"]
+  "TsmTeste": ["EchoString","ReverseString"],
+  "TsmPessoa": ["getPessoa","getAllPessoa","createPessoa","updatePessoa","deleteUser"]
 };
 

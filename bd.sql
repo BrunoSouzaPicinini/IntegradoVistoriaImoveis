@@ -15,7 +15,7 @@ CREATE TABLE aula.cadImovel (
   logradouro VARCHAR(45) NULL,
   bairro VARCHAR(45) NULL,
   complemento VARCHAR(45) NULL,
-  numero VARCHAR(45) NULL,
+  numero int NULL,
   cep VARCHAR(45) NULL,
   PRIMARY KEY (idImovel));
 
@@ -46,10 +46,12 @@ CREATE TABLE IF NOT EXISTS aula.cadItem (
   PRIMARY KEY (idItem));
   
 CREATE TABLE aula.movItensVistoria (
+  idItensVistoria INT NOT NULL,
   idImovel INT NOT NULL,
   idItem INT NOT NULL,
   observacao VARCHAR(45) NULL,
-  PRIMARY KEY (idImovel, idItem),
+  PRIMARY KEY (idItensVistoria),
+  CONSTRAINT un_itensVistoria UNIQUE (idImovel, idItem),
   CONSTRAINT fk_movVistoria_has_cadItem_movVistoria1
     FOREIGN KEY (idImovel)
     REFERENCES aula.movVistoria (idVistoria),
