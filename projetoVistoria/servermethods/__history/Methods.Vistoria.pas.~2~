@@ -1,0 +1,52 @@
+unit Methods.Vistoria;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth,
+  System.JSON,Pessoa, Datasnap.DSProviderDataModuleAdapter,DBXPlatform,
+  Pessoa, Imovel, Dao.Vistoria, Bo.Vistoria, Vistoria,
+  HttpStatusCode;
+
+type
+  TsmVistoria = class(TDSServerModule)
+  private
+    { Private declarations }
+  public
+    procedure updateVistoria(APessoaId, AImovelId: Integer;
+      AData, AObeservacao: string); // Post - Create
+    //
+    procedure acceptVistoria(AId, AIdImovel, AIdPessoa: Integer;
+      AData, AObservacao: string); // PutUpdate
+    //
+    procedure cancelVistoria(AId: Integer); // Delete - Delete
+  end;
+
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TsmVistoria }
+
+procedure TsmVistoria.acceptVistoria(AId, AIdImovel, AIdPessoa: Integer; AData,
+  AObservacao: string);
+begin
+
+end;
+
+procedure TsmVistoria.cancelVistoria(AId: Integer);
+begin
+
+end;
+
+procedure TsmVistoria.updateVistoria(APessoaId, AImovelId: Integer; AData,
+  AObeservacao: string);
+begin
+
+end;
+
+end.
+

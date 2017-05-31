@@ -24,6 +24,7 @@ type
     dscPessoa: TDSServerClass;
     dscItem: TDSServerClass;
     dscImovel: TDSServerClass;
+    dscVistoria: TDSServerClass;
 
     procedure dscTesteGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
@@ -33,6 +34,8 @@ type
      procedure dscItemGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
       procedure dscImovelGetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+     procedure dscVistoriaGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
 
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
@@ -59,7 +62,7 @@ var
 implementation
 
 uses Methods.Teste,Methods.Pessoa, Web.WebReq, Methods.Item,
-     Methods.Imovel;
+     Methods.Imovel,Methods.Vistoria;
 
 {$R *.dfm}
 
@@ -85,6 +88,12 @@ procedure TWebModule1.dscTesteGetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := Methods.Teste.TsmTeste;
+end;
+
+procedure TWebModule1.dscVistoriaGetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass:= Methods.Vistoria.TsmVistoria;
 end;
 
 procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;

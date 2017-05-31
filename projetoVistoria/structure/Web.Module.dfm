@@ -120,4 +120,10 @@ object WebModule1: TWebModule1
     Left = 304
     Top = 160
   end
+  object dscVistoria: TDSServerClass
+    OnGetClass = dscVistoriaGetClass
+    Server = DSServer
+    Left = 304
+    Top = 224
+  end
 end

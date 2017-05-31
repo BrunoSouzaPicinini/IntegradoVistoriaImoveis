@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 31/05/2017 01:07:01
+// 31/05/2017 10:45:51
 // 
 
 function DSAdmin(connectionInfo)
@@ -948,11 +948,57 @@ function TsmImovel(connectionInfo)
   };
 }
 
+function TsmVistoria(connectionInfo)
+{
+  this.executor = new ServerFunctionExecutor("TsmVistoria",connectionInfo);
+
+  /*
+   * @param AIdPessoa [in] - Type on server: Integer
+   * @param AIdImovel [in] - Type on server: Integer
+   * @param AData [in] - Type on server: string
+   * @param AObeservacao [in] - Type on server: string
+   */
+  this.updateVistoria = function(AIdPessoa, AIdImovel, AData, AObeservacao) {
+    this.executor.executeMethod('Vistoria', "POST", [AIdPessoa, AIdImovel, AData, AObeservacao], arguments[4], false, arguments[5], arguments[6]);
+  };
+
+  this.updateVistoria_URL = function(AIdPessoa, AIdImovel, AData, AObeservacao) {
+    return this.executor.getMethodURL("Vistoria", "POST", [AIdPessoa, AIdImovel, AData, AObeservacao], arguments[4])[0];
+  };
+
+  /*
+   * @param AIdVistoria [in] - Type on server: Integer
+   * @param AIdImovel [in] - Type on server: Integer
+   * @param AIdPessoa [in] - Type on server: Integer
+   * @param AData [in] - Type on server: string
+   * @param AObservacao [in] - Type on server: string
+   */
+  this.acceptVistoria = function(AIdVistoria, AIdImovel, AIdPessoa, AData, AObservacao) {
+    this.executor.executeMethod('Vistoria', "PUT", [AIdVistoria, AIdImovel, AIdPessoa, AData, AObservacao], arguments[5], false, arguments[6], arguments[7]);
+  };
+
+  this.acceptVistoria_URL = function(AIdVistoria, AIdImovel, AIdPessoa, AData, AObservacao) {
+    return this.executor.getMethodURL("Vistoria", "PUT", [AIdVistoria, AIdImovel, AIdPessoa, AData, AObservacao], arguments[5])[0];
+  };
+
+  /*
+   * @param AIdVistoria [in] - Type on server: Integer
+   */
+  this.cancelVistoria = function(AIdVistoria) {
+    this.executor.executeMethod('Vistoria', "DELETE", [AIdVistoria], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.cancelVistoria_URL = function(AIdVistoria) {
+    return this.executor.getMethodURL("Vistoria", "DELETE", [AIdVistoria], arguments[1])[0];
+  };
+}
+
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
   "TsmTeste": ["EchoString","ReverseString"],
   "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"],
   "TsmItem": ["getItem","getAllItem","updateItem","acceptPessoa","deleteItem"],
-  "TsmImovel": ["getImovel","getAllImovel","updateImovel","acceptImovel","cancelImovel"]
+  "TsmImovel": ["getImovel","getAllImovel","updateImovel","acceptImovel","cancelImovel"],
+  "TsmVistoria": ["updateVistoria","acceptVistoria","cancelVistoria"]
 };
 

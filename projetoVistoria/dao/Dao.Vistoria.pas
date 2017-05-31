@@ -5,7 +5,7 @@ interface
 uses
   System.Generics.Collections, system.json, DBXJSONReflect, BD.Connection,
   FireDAC.Comp.Client, SysUtils, Vistoria, Imovel, Pessoa, Dao.Pessoa,
-  Dao.Imovel, FireDAC.Phys.Intf,
+  Dao.Imovel, FireDAC.Phys.Intf, Messages, Dialogs,
   FireDAC.DApt;
 
 type
@@ -54,10 +54,10 @@ begin
   Con := TConnection.GetConnection;
   QueryString :=
     Format('INSERT INTO aula.movvistoria (idimovel, idpessoa, data, observacao)'
-    + ' values (''%d'', ''%d'', ''%s'', ''%s'')' + ' RETURNING id',
+    + ' values (''%d'', ''%d'', ''%s'', ''%s'')' + ' RETURNING idvistoria',
     [AVistoria.Imovel.IdImovel, AVistoria.Pessoa.IdPessoa, AVistoria.Data,
     AVistoria.Observacao]);
-
+  ShowMessage(QueryString);
   AVistoria.IdVistoria := Con.ExecSQLScalar(QueryString);
   Result := AVistoria;
 end;
