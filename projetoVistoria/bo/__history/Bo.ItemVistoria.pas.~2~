@@ -1,0 +1,55 @@
+unit Bo.ItemVistoria;
+
+interface
+
+uses Vistoria, Dao.Vistoria, Dao.Item, SysUtils, DateUtils, System.Classes,
+  System.Generics.Collections, ItemVistoria;
+
+type
+  TVistoriaItemBo = class
+  private
+  public
+    class function Create(AIdVistoria, AIdItem: Integer;
+      const AObservacao: string): TItemVistoria;
+    //
+    class function Update(var AVistoriaItem: TItemVistoria;
+      const AIdVistoria, AIdItem: Integer; const AObservacao: string)
+      : TItemVistoria;
+  end;
+
+implementation
+
+{ TVistoriaItemBo }
+
+class function TVistoriaItemBo.Create(AIdVistoria, AIdItem: Integer;
+  const AObservacao: string): TItemVistoria;
+var
+  DaoVistoria: TVistoriaDao;
+  DaoItem: TItemDao;
+begin
+  Result := TItemVistoria.Create;
+
+  Result.Id := 0;
+  Result.Vistoria := DaoVistoria.Read(AIdVistoria);
+  Result.Item := DaoItem.Read(AIdItem);
+  Result.Observacao := AObservacao;
+end;
+
+class function TVistoriaItemBo.Update(var AVistoriaItem: TVistoriaItem;
+  const AIdVistoria, AIdItem: Integer; const AObservacao: string)
+  : TVistoriaItem;
+var
+  DaoVistoria: TVistoriaDao;
+  DaoItem: TItemDao;
+begin
+  DaoVistoria := TVistoriaDao.Create;
+  DaoItem := TItemDao.Create;
+
+  AVistoriaItem.Vistoria := DaoVistoria.Read(AIdVistoria);
+  AVistoriaItem.Item := DaoItem.Read(AIdItem);
+  AVistoriaItem.Observacao := AObservacao;
+
+  Result := AVistoriaItem;
+end;
+
+end.

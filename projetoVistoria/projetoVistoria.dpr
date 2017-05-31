@@ -29,7 +29,8 @@ uses
   Methods.Imovel in 'servermethods\Methods.Imovel.pas' {smImovel: TDSServerModule},
   Dao.Vistoria in 'dao\Dao.Vistoria.pas',
   Bo.Vistoria in 'bo\Bo.Vistoria.pas',
-  Dao.ItemVistoria in 'dao\Dao.ItemVistoria.pas';
+  Dao.ItemVistoria in 'dao\Dao.ItemVistoria.pas',
+  Bo.ItemVistoria in 'bo\Bo.ItemVistoria.pas';
 
 begin
   if WebRequestHandler <> nil then
