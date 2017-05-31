@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/05/31 13:53:24.000.993,=D:\Users\Bruno\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/05/31 13:56:30.000.716,D:\Users\Bruno\Documents\Embarcadero\Studio\Projects\Unit2.dfm=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoriaClient\Form.Main.dfm</Transaction>
+    <Transaction>2017/05/31 13:56:30.000.716,D:\Users\Bruno\Documents\Embarcadero\Studio\Projects\Unit2.pas=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoriaClient\Form.Main.pas</Transaction>
+    <Transaction>2017/05/31 13:56:57.000.571,D:\Users\Bruno\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Integrado\6semestre\Delphi\trabalhoVistoria\projetoVistoriaClient\client_app.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

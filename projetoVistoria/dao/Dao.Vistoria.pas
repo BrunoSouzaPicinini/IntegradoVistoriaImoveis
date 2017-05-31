@@ -57,7 +57,7 @@ begin
     + ' values (''%d'', ''%d'', ''%s'', ''%s'')' + ' RETURNING idvistoria',
     [AVistoria.Imovel.IdImovel, AVistoria.Pessoa.IdPessoa, AVistoria.Data,
     AVistoria.Observacao]);
-  ShowMessage(QueryString);
+  //ShowMessage(QueryString);
   AVistoria.IdVistoria := Con.ExecSQLScalar(QueryString);
   Result := AVistoria;
 end;

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{21BD933B-CBA1-48CC-8300-A9B32FF6CF19}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="projetoVistoria\projetoVistoria.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="projetoVistoriaClient\client_app.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="projetoVistoria">
+        <MSBuild Projects="projetoVistoria\projetoVistoria.dproj"/>
+    </Target>
+    <Target Name="projetoVistoria:Clean">
+        <MSBuild Projects="projetoVistoria\projetoVistoria.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="projetoVistoria:Make">
+        <MSBuild Projects="projetoVistoria\projetoVistoria.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="client_app">
+        <MSBuild Projects="projetoVistoriaClient\client_app.dproj"/>
+    </Target>
+    <Target Name="client_app:Clean">
+        <MSBuild Projects="projetoVistoriaClient\client_app.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="client_app:Make">
+        <MSBuild Projects="projetoVistoriaClient\client_app.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="projetoVistoria;client_app"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="projetoVistoria:Clean;client_app:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="projetoVistoria:Make;client_app:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

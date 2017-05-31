@@ -18,13 +18,20 @@ uses
   Dao.Item in 'dao\Dao.Item.pas',
   Dao.Pessoa in 'dao\Dao.Pessoa.pas',
   Dao.Imovel in 'dao\Dao.Imovel.pas',
-  Methods.Pessoa in 'servermethods\Methods.Pessoa.pas' {DSServerModule1: TDSServerModule},
-  Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
   BaseObject in 'classes\BaseObject.pas',
+  BD.Connection in 'structure\BD.Connection.pas' {dmConnection: TDataModule},
   HttpStatusCode in 'classes\HttpStatusCode.pas',
-  BD.Connection in 'structure\BD.Connection.pas' {dmConnection: TDataModule};
-
-
+  Methods.Pessoa in 'servermethods\Methods.Pessoa.pas' {smPessoa: TDSServerModule},
+  Bo.Item in 'bo\Bo.Item.pas',
+  Methods.Item in 'servermethods\Methods.Item.pas' {smItem: TDSServerModule},
+  Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
+  Bo.Imovel in 'bo\Bo.Imovel.pas',
+  Methods.Imovel in 'servermethods\Methods.Imovel.pas' {smImovel: TDSServerModule},
+  Dao.Vistoria in 'dao\Dao.Vistoria.pas',
+  Bo.Vistoria in 'bo\Bo.Vistoria.pas',
+  Dao.ItemVistoria in 'dao\Dao.ItemVistoria.pas',
+  Bo.ItemVistoria in 'bo\Bo.ItemVistoria.pas',
+  Methods.Vistoria in 'servermethods\Methods.Vistoria.pas' {smVistoria: TDSServerModule};
 
 begin
   if WebRequestHandler <> nil then

@@ -31,7 +31,8 @@ uses
   Bo.Vistoria in 'bo\Bo.Vistoria.pas',
   Dao.ItemVistoria in 'dao\Dao.ItemVistoria.pas',
   Bo.ItemVistoria in 'bo\Bo.ItemVistoria.pas',
-  Methods.Vistoria in 'servermethods\Methods.Vistoria.pas' {smVistoria: TDSServerModule};
+  Methods.Vistoria in 'servermethods\Methods.Vistoria.pas' {smVistoria: TDSServerModule},
+  Methods.ItemVistoria in 'servermethods\Methods.ItemVistoria.pas' {smItemVistoria: TDSServerModule};
 
 begin
   if WebRequestHandler <> nil then
