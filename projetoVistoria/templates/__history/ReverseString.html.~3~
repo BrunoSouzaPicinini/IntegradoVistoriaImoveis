@@ -112,7 +112,7 @@ function onReverseStringClick()
 
 function teste()
 {
- window.location= 'ServerFunctionInvoker';
+ window.location= 'ServerFunctionInvoker.html';
 }
 
 </script>

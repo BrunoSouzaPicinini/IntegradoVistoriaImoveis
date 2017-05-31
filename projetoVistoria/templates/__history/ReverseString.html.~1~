@@ -1,8 +1,7 @@
 <!-- !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" -->
 <html>
 <head>
-<title>DataSnap REST Project
-</title>
+<title>DataSnap REST Project</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script type="text/javascript" src="js/base64.js"></script>
 <script type="text/javascript" src="js/json2.js"></script>
@@ -110,49 +109,36 @@ function onReverseStringClick()
   valueField.value = s.result;
 }
 
-function teste()
-{
- window.location= 'ServerFunctionInvoker';
-}
-
 </script>
 </head>
 <body onload="onLoad()">
   <#serverfunctioninvoker>
-    <h1>DataSnap REST Project
-</h1>
-    <div>Page loaded at <span id="timeElement"></span>
-
-
-
-</div>
-    <div id="logindiv" style="DISPLAY: none">
-      <p class="divlabel">Login
-</p><br />
+    <h1>DataSnap REST Project</h1>
+    <div> Page loaded at <span id="timeElement"></span>
+    </div>
+    <div id="logindiv" style="display:none">
+      <p class="divlabel">Login</p><br />
       <form onsubmit="onLogin(); return false;">
         <table class="authtable">
           <tr>
-            <td>User Name:
-</td>
-            <td><input id="userField" class="loginField" /></td>
+            <td>User Name:</td>
+            <td><input id="userField" class="loginField" type="text" /></td>
           </tr>
           <tr>
-            <td>Password:
-</td>
+            <td>Password:</td>
             <td><input id="passwrdField" class="loginField" type="password" /></td>
           </tr>
         </table>
         <div id="loginError" class="errorMsg"></div><br /><input id="loginButton" type="submit" value="LOG IN" />
       </form>
     </div>
-    <div id="contentdiv" class="contentdiv" style="DISPLAY: none">
+    <div id="contentdiv" class="contentdiv" style="display:none">
       <table>
         <tr>
-          <td><input id="valueField" class="loginField" value="A B C" /></td>
-          <td><button onclick="javascript:onReverseStringClick();">ReverseString
-</button></td>
+          <td><input id="valueField" class="loginField" type="text" value="A B C" /></td>
+          <td><button onclick='javascript:onReverseStringClick();'>ReverseString</button></td>
         </tr>
       </table>
-    </div><input type="button" value="teste" name="teste methods" onclick="javascript:teste();">
+    </div>
 </body>
 </html>

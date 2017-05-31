@@ -112,7 +112,7 @@ function onReverseStringClick()
 
 function teste()
 {
- window.location= 'ServerFunctionInvoker';
+ window.location= 'ServerFunctionInvoker.html';
 }
 
 </script>
@@ -122,8 +122,6 @@ function teste()
     <h1>DataSnap REST Project
 </h1>
     <div>Page loaded at <span id="timeElement"></span>
-
-
 
 </div>
     <div id="logindiv" style="DISPLAY: none">
@@ -153,6 +151,6 @@ function teste()
 </button></td>
         </tr>
       </table>
-    </div><input type="button" value="teste" name="teste methods" onclick="javascript:teste();">
+    </div><input type="button" value="teste" name="teste methods">
 </body>
 </html>

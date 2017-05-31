@@ -32,6 +32,12 @@ object WebModule1: TWebModule1
     Left = 96
     Top = 75
   end
+  object dscTeste: TDSServerClass
+    OnGetClass = dscTesteGetClass
+    Server = DSServer
+    Left = 200
+    Top = 11
+  end
   object ServerFunctionInvoker: TPageProducer
     HTMLFile = 'Templates\ServerFunctionInvoker.html'
     OnHTMLTag = ServerFunctionInvokerHTMLTag
@@ -99,11 +105,13 @@ object WebModule1: TWebModule1
   object dscPessoa: TDSServerClass
     OnGetClass = dscPessoaGetClass
     Server = DSServer
-    Left = 312
-    Top = 8
+    Left = 304
+    Top = 16
   end
   object dscItem: TDSServerClass
-    Left = 312
-    Top = 56
+    OnGetClass = dscItemGetClass
+    Server = DSServer
+    Left = 304
+    Top = 88
   end
 end
