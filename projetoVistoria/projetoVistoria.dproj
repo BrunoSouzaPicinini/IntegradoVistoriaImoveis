@@ -87,11 +87,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DelphiCompile>
         <DCCReference Include="structure\Form.App.pas">
             <Form>Form1</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="structure\Web.Module.pas">
             <Form>WebModule1</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TWebModule</DesignClass>
         </DCCReference>
         <DCCReference Include="bo\Bo.Pessoa.pas"/>
@@ -111,24 +109,20 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="classes\HttpStatusCode.pas"/>
         <DCCReference Include="servermethods\Methods.Pessoa.pas">
             <Form>smPessoa</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
         <DCCReference Include="bo\Bo.Item.pas"/>
         <DCCReference Include="servermethods\Methods.Item.pas">
             <Form>smItem</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
         <DCCReference Include="servermethods\Methods.Teste.pas">
             <Form>smTeste</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
         <DCCReference Include="bo\Bo.Imovel.pas"/>
         <DCCReference Include="servermethods\Methods.Imovel.pas">
             <Form>smImovel</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
         <None Include="js\base64.js"/>

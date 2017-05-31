@@ -26,7 +26,7 @@ class procedure TImovelDao.Consolidate(var AImovel: TImovel; AQuery: TFDQuery);
 begin
  with AQuery do
   begin
-    AImovel.IdImovel := FindField('idpessoa').AsInteger;
+    AImovel.IdImovel := FindField('idimovel').AsInteger;
     AImovel.Quadra := FindField('quadra').AsString;
     AIMovel.lote := FindField('lote').AsString;
     AImovel.metragemTerreno := FindField('metragemterreno').AsFloat;
@@ -45,13 +45,13 @@ var
   QueryString : string;
 begin
   Con := TConnection.GetConnection;
-
+  FormatSettings.DecimalSeparator := '.';
   QueryString := Format(
   'INSERT INTO aula.cadimovel '+
   '(quadra,lote,metragemterreno,metragemimovel,logradouro,bairro,complemento,numero,cep)'+
   ' VALUES ( ''%s'',''%s'',''%n'',''%n'',''%s'',''%s'',''%s'',''%d'',''%s'' ) RETURNING idimovel',
     [AImovel.quadra,AImovel.lote,AImovel.metragemterreno,AImovel.metragemimovel,AImovel.logradouro,AImovel.bairro,AImovel.complemento,AImovel.numero,AImovel.cep]);
-  ShowMessage(QueryString);
+  //ShowMessage(QueryString);
   AImovel.idImovel := Con.ExecSQLScalar(QueryString);
 
   Result := AImovel;
@@ -79,7 +79,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -106,7 +106,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -141,7 +141,7 @@ var
   QueryString: string;
 begin
   Con := TConnection.getConnection;
-
+  FormatSettings.DecimalSeparator := '.';
   QueryString := Format(
     'UPDATE aula.cadimovel SET quadra = ''%s'', lote=''%s'' , '+
     ' metragemterreno =''%n'', metragemimovel =''%n'', logradouro = ''%s'', '+

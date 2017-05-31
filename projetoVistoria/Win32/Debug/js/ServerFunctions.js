@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 30/05/2017 22:50:00
+// 31/05/2017 01:07:01
 // 
 
 function DSAdmin(connectionInfo)

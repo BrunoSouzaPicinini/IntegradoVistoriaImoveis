@@ -2,7 +2,7 @@ unit Dao.Imovel;
 
 interface
 uses
-System.Generics.Collections, DBXJSON, DBXJSONReflect, BD.Connection,
+System.Generics.Collections, DBXJSON, DBXJSONReflect, BD.Connection,Dialogs,Messages,
   FireDAC.Comp.Client, SysUtils, Imovel, FireDAC.Phys.Intf, FireDAC.DApt;
 
 type
@@ -43,16 +43,17 @@ class function TImovelDao.Create(AImovel: TImovel): TImovel;
 var
   Con : TFDConnection;
   QueryString : string;
-  IdImovel: Integer;
 begin
-  Con := TConnection.getConnection;
-
+  Con := TConnection.GetConnection;
+  FormatSettings.DecimalSeparator := '.';
   QueryString := Format(
   'INSERT INTO aula.cadimovel '+
   '(quadra,lote,metragemterreno,metragemimovel,logradouro,bairro,complemento,numero,cep)'+
-  ' VALUES ( ''%s'' ) RETURNING idimovel',
+  ' VALUES ( ''%s'',''%s'',''%n'',''%n'',''%s'',''%s'',''%s'',''%d'',''%s'' ) RETURNING idimovel',
     [AImovel.quadra,AImovel.lote,AImovel.metragemterreno,AImovel.metragemimovel,AImovel.logradouro,AImovel.bairro,AImovel.complemento,AImovel.numero,AImovel.cep]);
+  //ShowMessage(QueryString);
   AImovel.idImovel := Con.ExecSQLScalar(QueryString);
+
   Result := AImovel;
 end;
 
@@ -61,7 +62,7 @@ var
   Con: TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
   QueryString := Format('DELETE FROM aula.cadimovel WHERE idimovel = %d', [AIdImovel]);
   Con.ExecSQL(QueryString);
 end;
@@ -78,7 +79,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -105,7 +106,7 @@ begin
 
   with Query do
   begin
-    Connection := TConnection.getConnection;
+    Connection := TConnection.GetConnection;
     Close;
     SQL.Clear;
     SQL.Add(QueryString);
@@ -140,14 +141,14 @@ var
   QueryString: string;
 begin
   Con := TConnection.getConnection;
-
+  FormatSettings.DecimalSeparator := '.';
   QueryString := Format(
-    'UPDATE aula.user SET quadra = ''%s'', lote=''%s'' , '+
+    'UPDATE aula.cadimovel SET quadra = ''%s'', lote=''%s'' , '+
     ' metragemterreno =''%n'', metragemimovel =''%n'', logradouro = ''%s'', '+
-    ' bairro =''%s'', complemento =''%s'',numero=''%d'' '+
+    ' bairro =''%s'', complemento =''%s'',numero=''%d'', cep=''%s'' '+
     ' WHERE idimovel = %d',
-    [AImovel.quadra, AImovel.lote, AImovel.metragemterreno, AImovel.metragemimovel,
-    AImovel.logradouro,AImovel.bairro, AImovel.complemento, AImovel.numero, AImovel.idimovel ]
+    [AImovel.quadra, AImovel.lote, AImovel.metragemterreno, AImovel.metragemimovel,AImovel.logradouro
+    ,AImovel.bairro, AImovel.complemento, AImovel.numero,AImovel.cep, AImovel.idimovel ]
   );
 
   Con.ExecSQL(QueryString);
