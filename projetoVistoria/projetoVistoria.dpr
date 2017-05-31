@@ -26,7 +26,9 @@ uses
   Methods.Item in 'servermethods\Methods.Item.pas' {smItem: TDSServerModule},
   Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
   Bo.Imovel in 'bo\Bo.Imovel.pas',
-  Methods.Imovel in 'servermethods\Methods.Imovel.pas' {smImovel: TDSServerModule};
+  Methods.Imovel in 'servermethods\Methods.Imovel.pas' {smImovel: TDSServerModule},
+  Dao.Vistoria in 'dao\Dao.Vistoria.pas',
+  Bo.Vistoria in 'bo\Bo.Vistoria.pas';
 
 begin
   if WebRequestHandler <> nil then
