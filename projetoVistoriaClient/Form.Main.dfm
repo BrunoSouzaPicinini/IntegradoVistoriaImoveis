@@ -28,6 +28,7 @@ object frmMain: TfrmMain
       end
       object Pessoa1: TMenuItem
         Caption = 'Pessoa'
+        OnClick = Pessoa1Click
       end
       object Imvel1: TMenuItem
         Caption = 'Im'#243'vel'
