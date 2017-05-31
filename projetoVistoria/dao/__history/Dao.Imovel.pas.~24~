@@ -135,8 +135,24 @@ begin
 end;
 
 class function TImovelDao.Update(AImovel: TImovel): TImovel;
+var
+  Con: TFDConnection;
+  QueryString: string;
 begin
+  Con := TConnection.getConnection;
 
+  QueryString := Format(
+    'UPDATE aula.cadimovel SET quadra = ''%s'', lote=''%s'' , '+
+    ' metragemterreno =''%n'', metragemimovel =''%n'', logradouro = ''%s'', '+
+    ' bairro =''%s'', complemento =''%s'',numero=''%d'', cep=''%s'' '+
+    ' WHERE idimovel = %d',
+    [AImovel.quadra, AImovel.lote, AImovel.metragemterreno, AImovel.metragemimovel,AImovel.logradouro
+    ,AImovel.bairro, AImovel.complemento, AImovel.numero,AImovel.cep, AImovel.idimovel ]
+  );
+
+  Con.ExecSQL(QueryString);
+
+  Result := AImovel;
 end;
 
 end.

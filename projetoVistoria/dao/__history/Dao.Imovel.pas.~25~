@@ -43,7 +43,6 @@ class function TImovelDao.Create(AImovel: TImovel): TImovel;
 var
   Con : TFDConnection;
   QueryString : string;
-  IdImovel: Integer;
 begin
   Con := TConnection.getConnection;
 
@@ -142,11 +141,12 @@ begin
   Con := TConnection.getConnection;
 
   QueryString := Format(
-    'UPDATE aula.user SET quadra = ''%s'', lote=''%s'' , '+
-    ' metragemterreno =''%d'', metragemimovel =''%d'', metragemlogradouro '+
-    ' WHERE id = %d',
-    [AImovel.quadra, AImovel.lote, AImovel.metragemterreno, AImovel.metragemimovel,
-    AImovel.logradouro]
+    'UPDATE aula.cadimovel SET quadra = ''%s'', lote=''%s'' , '+
+    ' metragemterreno =''%n'', metragemimovel =''%n'', logradouro = ''%s'', '+
+    ' bairro =''%s'', complemento =''%s'',numero=''%d'', cep=''%s'' '+
+    ' WHERE idimovel = %d',
+    [AImovel.quadra, AImovel.lote, AImovel.metragemterreno, AImovel.metragemimovel,AImovel.logradouro
+    ,AImovel.bairro, AImovel.complemento, AImovel.numero,AImovel.cep, AImovel.idimovel ]
   );
 
   Con.ExecSQL(QueryString);

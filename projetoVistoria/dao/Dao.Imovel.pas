@@ -43,14 +43,13 @@ class function TImovelDao.Create(AImovel: TImovel): TImovel;
 var
   Con : TFDConnection;
   QueryString : string;
-  IdImovel: Integer;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
 
   QueryString := Format(
   'INSERT INTO aula.cadimovel '+
   '(quadra,lote,metragemterreno,metragemimovel,logradouro,bairro,complemento,numero,cep)'+
-  ' VALUES ( ''%s'' ) RETURNING idimovel',
+  ' VALUES ( ''%s'',''%s'',''%n'',''%n'',''%s'',''%s'',''%s'',''%d'',''%s'', ) RETURNING idimovel',
     [AImovel.quadra,AImovel.lote,AImovel.metragemterreno,AImovel.metragemimovel,AImovel.logradouro,AImovel.bairro,AImovel.complemento,AImovel.numero,AImovel.cep]);
   AImovel.idImovel := Con.ExecSQLScalar(QueryString);
   Result := AImovel;
@@ -61,7 +60,7 @@ var
   Con: TFDConnection;
   QueryString: string;
 begin
-  Con := TConnection.getConnection;
+  Con := TConnection.GetConnection;
   QueryString := Format('DELETE FROM aula.cadimovel WHERE idimovel = %d', [AIdImovel]);
   Con.ExecSQL(QueryString);
 end;
