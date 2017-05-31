@@ -114,4 +114,10 @@ object WebModule1: TWebModule1
     Left = 304
     Top = 88
   end
+  object dscImovel: TDSServerClass
+    OnGetClass = dscImovelGetClass
+    Server = DSServer
+    Left = 304
+    Top = 160
+  end
 end

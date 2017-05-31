@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 30/05/2017 21:26:51
+// 30/05/2017 22:50:00
 // 
 
 function DSAdmin(connectionInfo)
@@ -843,10 +843,116 @@ function TsmItem(connectionInfo)
   };
 }
 
+function TsmImovel(connectionInfo)
+{
+  this.executor = new ServerFunctionExecutor("TsmImovel",connectionInfo);
+
+  /*
+   * @param AIdImovel [in] - Type on server: Integer
+   * @return result - Type on server: TJSONValue
+   */
+  this.getImovel = function(AIdImovel) {
+    var returnObject = this.executor.executeMethod('getImovel', "GET", [AIdImovel], arguments[1], true, arguments[2], arguments[3]);
+    if (arguments[1] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.AIdImovel = AIdImovel;
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getImovel_URL = function(AIdImovel) {
+    return this.executor.getMethodURL("getImovel", "GET", [AIdImovel], arguments[1])[0];
+  };
+
+  /*
+   * @return result - Type on server: TJSONArray
+   */
+  this.getAllImovel = function() {
+    var returnObject = this.executor.executeMethod('getAllImovel', "GET", [], arguments[0], true, arguments[1], arguments[2]);
+    if (arguments[0] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.result = resultArray[0];
+        if (returnObject.cacheId != null && returnObject.cmdIndex != null) {
+          resultObject._cacheId = returnObject.cacheId;
+          resultObject._cmdIndex = returnObject.cmdIndex;
+        }
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.getAllImovel_URL = function() {
+    return this.executor.getMethodURL("getAllImovel", "GET", [], arguments[0])[0];
+  };
+
+  /*
+   * @param AQuadra [in] - Type on server: string
+   * @param ALote [in] - Type on server: string
+   * @param ALogradouro [in] - Type on server: string
+   * @param ABairro [in] - Type on server: string
+   * @param AComplemento [in] - Type on server: string
+   * @param ACep [in] - Type on server: string
+   * @param AMetragemTerreno [in] - Type on server: Double
+   * @param AMetragemImovel [in] - Type on server: Double
+   * @param ANumero [in] - Type on server: Integer
+   */
+  this.updateImovel = function(AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero) {
+    this.executor.executeMethod('Imovel', "POST", [AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero], arguments[9], false, arguments[10], arguments[11]);
+  };
+
+  this.updateImovel_URL = function(AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero) {
+    return this.executor.getMethodURL("Imovel", "POST", [AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero], arguments[9])[0];
+  };
+
+  /*
+   * @param AIdImovel [in] - Type on server: Integer
+   * @param AQuadra [in] - Type on server: string
+   * @param ALote [in] - Type on server: string
+   * @param ALogradouro [in] - Type on server: string
+   * @param ABairro [in] - Type on server: string
+   * @param AComplemento [in] - Type on server: string
+   * @param ACep [in] - Type on server: string
+   * @param AMetragemTerreno [in] - Type on server: Double
+   * @param AMetragemImovel [in] - Type on server: Double
+   * @param ANumero [in] - Type on server: Integer
+   */
+  this.acceptImovel = function(AIdImovel, AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero) {
+    this.executor.executeMethod('Imovel', "PUT", [AIdImovel, AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero], arguments[10], false, arguments[11], arguments[12]);
+  };
+
+  this.acceptImovel_URL = function(AIdImovel, AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero) {
+    return this.executor.getMethodURL("Imovel", "PUT", [AIdImovel, AQuadra, ALote, ALogradouro, ABairro, AComplemento, ACep, AMetragemTerreno, AMetragemImovel, ANumero], arguments[10])[0];
+  };
+
+  /*
+   * @param AIdImovel [in] - Type on server: Integer
+   */
+  this.cancelImovel = function(AIdImovel) {
+    this.executor.executeMethod('Imovel', "DELETE", [AIdImovel], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.cancelImovel_URL = function(AIdImovel) {
+    return this.executor.getMethodURL("Imovel", "DELETE", [AIdImovel], arguments[1])[0];
+  };
+}
+
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
   "TsmTeste": ["EchoString","ReverseString"],
   "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"],
-  "TsmItem": ["getItem","getAllItem","updateItem","acceptPessoa","deleteItem"]
+  "TsmItem": ["getItem","getAllItem","updateItem","acceptPessoa","deleteItem"],
+  "TsmImovel": ["getImovel","getAllImovel","updateImovel","acceptImovel","cancelImovel"]
 };
 

@@ -1,0 +1,34 @@
+unit Methods.Imovel;
+
+interface
+
+uses
+   System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth,
+  System.JSON,Imovel, Datasnap.DSProviderDataModuleAdapter,DBXPlatform;
+
+type
+  TsmImovel = class(TDSServerModule)
+  private
+    { Private declarations }
+  public
+    function getImovel(AIdImovel: Integer): TJSONValue; // Get - Read
+    function getAllImovel(): TJSONArray; // Get - Read
+    procedure updateImovel(AQuadra, ALote, ALogradouro, ABairro, AComplemento,
+      ACep: string; AMetragemTerreno, AMetragemImovel: Double; ANumero:Integer);
+    // Post - Create
+    procedure acceptImovel(AIdImovel: Integer; AQuadra, ALote, ALogradouro, ABairro,
+      AComplemento,  ACep: string;
+      AMetragemTerreno, AMetragemImovel: Double;ANumero : Integer);
+     // Put Update
+    procedure cancelImovel(AIdImovel: Integer); // Delete - Delete
+  end;
+
+
+implementation
+uses Dao.Imovel, Bo.Imovel, HttpStatusCode;
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
+

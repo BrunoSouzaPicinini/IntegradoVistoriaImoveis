@@ -23,13 +23,16 @@ type
     DSServerMetaDataProvider: TDSServerMetaDataProvider;
     dscPessoa: TDSServerClass;
     dscItem: TDSServerClass;
+    dscImovel: TDSServerClass;
 
     procedure dscTesteGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     //getClass dscPessoa
     procedure dscPessoaGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
-    procedure dscItemGetClass(DSServerClass: TDSServerClass;
+     procedure dscItemGetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+      procedure dscImovelGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
 
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
@@ -55,9 +58,16 @@ var
 
 implementation
 
-uses Methods.Teste,Methods.Pessoa, Web.WebReq, Methods.Item;
+uses Methods.Teste,Methods.Pessoa, Web.WebReq, Methods.Item,
+     Methods.Imovel;
 
 {$R *.dfm}
+
+procedure TWebModule1.dscImovelGetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := Methods.Imovel.TsmImovel;
+end;
 
 procedure TWebModule1.dscItemGetClass(DSServerClass: TDSServerClass;
   var PersistentClass: TPersistentClass);

@@ -1,0 +1,18 @@
+unit Bo.Imovel;
+
+interface
+uses
+Imovel;
+
+type
+TImovelBo = class
+  private
+  public
+    class function Create(const AQuadra, ALote,ALogradouro,ABairro,AComplemento,ACep: string;
+    AMetragemTerreno,AMetragemImovel : Double; Anumero: Integer ): TImovel;
+    class procedure Update(var AImovel: TImovel; const AQuadra, ALote,ALogradouro,ABairro,AComplemento,ACep: string;
+    AMetragemTerreno,AMetragemImovel : Double; Anumero: Integer );
+end;
+implementation
+
+end.

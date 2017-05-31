@@ -2,7 +2,7 @@ unit Dao.Imovel;
 
 interface
 uses
-System.Generics.Collections, DBXJSON, DBXJSONReflect, BD.Connection,
+System.Generics.Collections, DBXJSON, DBXJSONReflect, BD.Connection,Dialogs,Messages,
   FireDAC.Comp.Client, SysUtils, Imovel, FireDAC.Phys.Intf, FireDAC.DApt;
 
 type
@@ -49,9 +49,11 @@ begin
   QueryString := Format(
   'INSERT INTO aula.cadimovel '+
   '(quadra,lote,metragemterreno,metragemimovel,logradouro,bairro,complemento,numero,cep)'+
-  ' VALUES ( ''%s'',''%s'',''%n'',''%n'',''%s'',''%s'',''%s'',''%d'',''%s'', ) RETURNING idimovel',
+  ' VALUES ( ''%s'',''%s'',''%n'',''%n'',''%s'',''%s'',''%s'',''%d'',''%s'' ) RETURNING idimovel',
     [AImovel.quadra,AImovel.lote,AImovel.metragemterreno,AImovel.metragemimovel,AImovel.logradouro,AImovel.bairro,AImovel.complemento,AImovel.numero,AImovel.cep]);
+  ShowMessage(QueryString);
   AImovel.idImovel := Con.ExecSQLScalar(QueryString);
+
   Result := AImovel;
 end;
 

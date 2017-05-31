@@ -1,0 +1,15 @@
+unit Bo.Imovel;
+
+interface
+uses
+Imovel;
+
+type
+TImovelBo = class
+  private
+  public
+
+end;
+implementation
+
+end.

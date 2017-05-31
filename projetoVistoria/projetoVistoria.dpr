@@ -24,7 +24,9 @@ uses
   Methods.Pessoa in 'servermethods\Methods.Pessoa.pas' {smPessoa: TDSServerModule},
   Bo.Item in 'bo\Bo.Item.pas',
   Methods.Item in 'servermethods\Methods.Item.pas' {smItem: TDSServerModule},
-  Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule};
+  Methods.Teste in 'servermethods\Methods.Teste.pas' {smTeste: TDSServerModule},
+  Bo.Imovel in 'bo\Bo.Imovel.pas',
+  Methods.Imovel in 'servermethods\Methods.Imovel.pas' {smImovel: TDSServerModule};
 
 begin
   if WebRequestHandler <> nil then
