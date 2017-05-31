@@ -1,0 +1,66 @@
+object frmUser: TfrmUser
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsToolWindow
+  Caption = 'Cadastro de Usu'#225'rio'
+  ClientHeight = 211
+  ClientWidth = 457
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pgcUser: TPageControl
+    Left = 0
+    Top = 0
+    Width = 457
+    Height = 211
+    ActivePage = tsConsulta
+    Align = alClient
+    TabOrder = 0
+    object tsConsulta: TTabSheet
+      Caption = 'Consulta'
+      object grdUser: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 449
+        Height = 183
+        Align = alClient
+        DataSource = dsUser
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+    end
+  end
+  object dsUser: TDataSource
+    DataSet = cdsUser
+    Left = 196
+    Top = 120
+  end
+  object cdsUser: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 260
+    Top = 120
+    object intgrfldUserIDUser: TIntegerField
+      FieldName = 'IDUser'
+    end
+    object strngfldUserLOGIN: TStringField
+      FieldName = 'LOGIN'
+      Size = 50
+    end
+    object strngfldUserPASS: TStringField
+      FieldName = 'PASS'
+    end
+  end
+end

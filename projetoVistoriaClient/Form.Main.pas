@@ -10,11 +10,15 @@ type
   TfrmMain = class(TForm)
     mmMenu: TMainMenu;
     Cadastros1: TMenuItem;
-    Pessoa1: TMenuItem;
-    Imovel1: TMenuItem;
-    Item1: TMenuItem;
     Financeiro1: TMenuItem;
     Vistoria1: TMenuItem;
+    Usurio1: TMenuItem;
+    Pessoa1: TMenuItem;
+    Imvel1: TMenuItem;
+    Item1: TMenuItem;
+    procedure Usurio1Click(Sender: TObject);
+
+
   private
     { Private declarations }
   public
@@ -27,5 +31,32 @@ var
 implementation
 
 {$R *.dfm}
+uses
+  Form.User;
+
+
+
+
+
+{ TfrmMain }
+
+procedure TfrmMain.Usurio1Click(Sender: TObject);
+begin
+  if not Assigned(frmUser) then
+    Application.CreateForm(TfrmUser, frmUser);
+
+  with frmUser do
+  begin
+      try
+        ShowModal;
+      finally
+        Free;
+        frmUser := nil;
+      end;
+  end;
+end;
 
 end.
+
+
+
