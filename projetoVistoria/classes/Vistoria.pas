@@ -19,9 +19,18 @@ uses
       property Pessoa: TPessoa read FPessoa write FPessoa;
       property Imovel: TImovel read FImovel write FImovel;
       property Observacao: string read FObservacao write FObservacao;
+      constructor Create;
     end;
 
 
 implementation
+
+{ TVistoria }
+
+constructor TVistoria.Create;
+begin
+  FPessoa := TPessoa.Create;
+  FImovel := TImovel.Create;
+end;
 
 end.

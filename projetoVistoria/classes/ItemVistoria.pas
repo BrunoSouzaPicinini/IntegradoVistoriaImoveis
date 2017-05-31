@@ -16,8 +16,18 @@ type
     property Item: TItem read FItem write FItem;
     property Vistoria: TVistoria read FVistoria write FVistoria;
     property Observacao: string read FObservacao write FObservacao;
+
+    constructor Create;
   end;
 
 implementation
+
+{ TItemVistoria }
+
+constructor TItemVistoria.Create;
+begin
+  FVistoria := TVistoria.Create;
+  FItem := TItem.Create;
+end;
 
 end.

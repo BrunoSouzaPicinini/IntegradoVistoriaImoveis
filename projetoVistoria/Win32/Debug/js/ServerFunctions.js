@@ -1,6 +1,6 @@
 ﻿// 
 // Created by the DataSnap proxy generator.
-// 31/05/2017 10:45:51
+// 31/05/2017 12:31:13
 // 
 
 function DSAdmin(connectionInfo)
@@ -993,12 +993,56 @@ function TsmVistoria(connectionInfo)
   };
 }
 
+function TsmItemVistoria(connectionInfo)
+{
+  this.executor = new ServerFunctionExecutor("TsmItemVistoria",connectionInfo);
+
+  /*
+   * @param AIdVistoria [in] - Type on server: Integer
+   * @param AIdItem [in] - Type on server: Integer
+   * @param AObservacao [in] - Type on server: string
+   */
+  this.updateItemVistoria = function(AIdVistoria, AIdItem, AObservacao) {
+    this.executor.executeMethod('ItemVistoria', "POST", [AIdVistoria, AIdItem, AObservacao], arguments[3], false, arguments[4], arguments[5]);
+  };
+
+  this.updateItemVistoria_URL = function(AIdVistoria, AIdItem, AObservacao) {
+    return this.executor.getMethodURL("ItemVistoria", "POST", [AIdVistoria, AIdItem, AObservacao], arguments[3])[0];
+  };
+
+  /*
+   * @param AIdItemVistoria [in] - Type on server: Integer
+   * @param AIdVistoria [in] - Type on server: Integer
+   * @param AIdItem [in] - Type on server: Integer
+   * @param AObservacao [in] - Type on server: string
+   */
+  this.acceptItemVistoria = function(AIdItemVistoria, AIdVistoria, AIdItem, AObservacao) {
+    this.executor.executeMethod('ItemVistoria', "PUT", [AIdItemVistoria, AIdVistoria, AIdItem, AObservacao], arguments[4], false, arguments[5], arguments[6]);
+  };
+
+  this.acceptItemVistoria_URL = function(AIdItemVistoria, AIdVistoria, AIdItem, AObservacao) {
+    return this.executor.getMethodURL("ItemVistoria", "PUT", [AIdItemVistoria, AIdVistoria, AIdItem, AObservacao], arguments[4])[0];
+  };
+
+  /*
+   * @param AIdItemVistoria [in] - Type on server: Integer
+   */
+  this.cancelItemVistoria = function(AIdItemVistoria) {
+    this.executor.executeMethod('ItemVistoria', "DELETE", [AIdItemVistoria], arguments[1], false, arguments[2], arguments[3]);
+  };
+
+  this.cancelItemVistoria_URL = function(AIdItemVistoria) {
+    return this.executor.getMethodURL("ItemVistoria", "DELETE", [AIdItemVistoria], arguments[1])[0];
+  };
+}
+
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
   "TsmTeste": ["EchoString","ReverseString"],
   "TsmPessoa": ["getPessoa","getAllPessoa","updatePessoa","acceptPessoa","deleteUser"],
   "TsmItem": ["getItem","getAllItem","updateItem","acceptPessoa","deleteItem"],
   "TsmImovel": ["getImovel","getAllImovel","updateImovel","acceptImovel","cancelImovel"],
-  "TsmVistoria": ["updateVistoria","acceptVistoria","cancelVistoria"]
+  "TsmVistoria": ["updateVistoria","acceptVistoria","cancelVistoria"],
+  "TsmItemVistoria": ["updateItemVistoria","acceptItemVistoria","cancelItemVistoria"]
 };
 
