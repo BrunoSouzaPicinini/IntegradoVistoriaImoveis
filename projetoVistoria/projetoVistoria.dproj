@@ -127,6 +127,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DCCReference>
         <DCCReference Include="dao\Dao.Vistoria.pas"/>
         <DCCReference Include="bo\Bo.Vistoria.pas"/>
+        <DCCReference Include="dao\Dao.ItemVistoria.pas"/>
         <None Include="js\base64.js"/>
         <None Include="js\ServerFunctionExecutor.js"/>
         <None Include="js\json2.js"/>
