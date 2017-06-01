@@ -32,7 +32,8 @@ uses
   Dao.ItemVistoria in 'dao\Dao.ItemVistoria.pas',
   Bo.ItemVistoria in 'bo\Bo.ItemVistoria.pas',
   Methods.Vistoria in 'servermethods\Methods.Vistoria.pas' {smVistoria: TDSServerModule},
-  Methods.ItemVistoria in 'servermethods\Methods.ItemVistoria.pas' {smItemVistoria: TDSServerModule};
+  Methods.ItemVistoria in 'servermethods\Methods.ItemVistoria.pas' {smItemVistoria: TDSServerModule},
+  Form.Item in '..\projetoVistoriaClient\Form.Item.pas' {frmItem};
 
 begin
   if WebRequestHandler <> nil then
@@ -40,5 +41,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TdmConnection, dmConnection);
+  Application.CreateForm(TfrmItem, frmItem);
   Application.Run;
 end.

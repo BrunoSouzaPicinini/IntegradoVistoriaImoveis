@@ -5,7 +5,7 @@ object frmPessoa: TfrmPessoa
   BorderStyle = bsSizeToolWin
   Caption = 'Pessoa'
   ClientHeight = 201
-  ClientWidth = 514
+  ClientWidth = 442
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,35 +20,14 @@ object frmPessoa: TfrmPessoa
   object pgcPessoa: TPageControl
     Left = 0
     Top = 0
-    Width = 514
+    Width = 442
     Height = 201
     ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
-    object Consulta: TTabSheet
-      Caption = 'Consulta'
-      ImageIndex = 1
-      ExplicitWidth = 439
-      object grdPessoa: TDBGrid
-        Left = 0
-        Top = 0
-        Width = 506
-        Height = 173
-        Align = alClient
-        DataSource = dsPessoa
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-      end
-    end
+    OnChange = FormShow
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitLeft = 8
-      ExplicitTop = 28
-      ExplicitWidth = 439
       object lblCodigo: TLabel
         Left = 16
         Top = 3
@@ -64,7 +43,7 @@ object frmPessoa: TfrmPessoa
         Caption = 'Nome'
       end
       object btnGravar: TButton
-        Left = 306
+        Left = 282
         Top = 136
         Width = 75
         Height = 25
@@ -87,7 +66,7 @@ object frmPessoa: TfrmPessoa
         TabOrder = 2
       end
       object btnAlterar: TButton
-        Left = 113
+        Left = 89
         Top = 136
         Width = 75
         Height = 25
@@ -96,7 +75,7 @@ object frmPessoa: TfrmPessoa
         OnClick = btnAlterarClick
       end
       object btnExcluir: TButton
-        Left = 209
+        Left = 185
         Top = 136
         Width = 75
         Height = 25
@@ -105,16 +84,34 @@ object frmPessoa: TfrmPessoa
         OnClick = btnExcluirClick
       end
     end
+    object Consulta: TTabSheet
+      Caption = 'Consulta'
+      ImageIndex = 1
+      object grdPessoa: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 434
+        Height = 173
+        Align = alClient
+        DataSource = dsPessoa
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+    end
   end
   object dsPessoa: TDataSource
     DataSet = cdsPessoa
-    Left = 320
+    Left = 272
     Top = 56
   end
   object cdsPessoa: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 384
+    Left = 336
     Top = 56
     object intgrfldPessoaIdPessoa: TIntegerField
       FieldName = 'IdPessoa'

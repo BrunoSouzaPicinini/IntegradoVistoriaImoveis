@@ -34,7 +34,7 @@ begin
     try
       Dao := TPessoaDao.Create;
       Dao.Save(TPessoaBo.Create(ANome));
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e : Exception do
       begin
@@ -55,7 +55,7 @@ begin
       Dao := TPessoaDao.Create;
       Dao.Delete(AIdPessoa);
 
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS;
     except
       on e: Exception do
       begin
@@ -125,7 +125,7 @@ begin
       APessoa := Dao.Read(AIdPessoa);
       TPessoaBo.Update(APessoa, ANome);
       Dao.Save(APessoa);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCESS_ACCEPTED;
     except
       on e : Exception do
       begin
