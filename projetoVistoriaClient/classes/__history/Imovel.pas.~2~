@@ -1,0 +1,38 @@
+unit Imovel;
+
+interface
+
+uses
+BaseObject;
+
+type
+
+  TImovel = class(TBaseObject)
+    private
+      FIdImovel : Integer;
+      FQuadra : string;
+      FLote : string;
+      FMetragemTerreno : Double;
+      FMetragemImovel : Double;
+      FLogradouro : string;
+      FBairro : string;
+      FComplemento : string;
+      FNumero : Integer;
+      FCep : string;
+
+    public
+      property idImovel: Integer read FIdImovel write FIdImovel;
+      property quadra: string read FQuadra write FQuadra;
+      property lote: string read Flote write Flote;
+      property metragemTerreno : Double read FMetragemTerreno write FMetragemTerreno;
+      property metragemImovel: Double read FmetragemImovel write FmetragemImovel;
+      property logradouro: string read Flogradouro write Flogradouro;
+      property bairro: string read Fbairro write Fbairro;
+      property complemento: string read Fcomplemento write Fcomplemento;
+      property numero: Integer read Fnumero write Fnumero;
+      property cep: string read Fcep write Fcep;
+  end;
+
+implementation
+
+end.

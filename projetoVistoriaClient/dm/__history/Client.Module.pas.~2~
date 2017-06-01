@@ -1,0 +1,26 @@
+unit Client.Module;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, IPPeerClient, Datasnap.DSClientRest;
+
+type
+  TDataModule1 = class(TDataModule)
+    dsConnection: TDSRestConnection;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
