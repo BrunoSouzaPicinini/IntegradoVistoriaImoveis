@@ -26,8 +26,6 @@
     Align = alClient
     TabOrder = 0
     OnChange = FormShow
-    ExplicitLeft = 8
-    ExplicitTop = 32
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
       ExplicitLeft = 8
@@ -203,10 +201,6 @@
     object tsConsulta: TTabSheet
       Caption = 'Consulta'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 28
-      ExplicitWidth = 439
-      ExplicitHeight = 173
       object grdImovel: TDBGrid
         Left = 0
         Top = 0

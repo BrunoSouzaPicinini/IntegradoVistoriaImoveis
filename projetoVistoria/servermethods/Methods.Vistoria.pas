@@ -43,7 +43,7 @@ begin
       Vistoria := Dao.Read(AIdVistoria);
       TVistoriaBo.Update(Vistoria, AIdImovel, AIdPessoa, AData, AObservacao);
       Dao.Save(Vistoria);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCESS_ACCEPTED;
     except
       on e: Exception do
       begin
@@ -64,7 +64,7 @@ begin
       Dao := TVistoriaDao.Create;
       Dao.Delete(AIdVistoria);
 
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin
@@ -86,7 +86,7 @@ begin
     try
       Dao := TVistoriaDao.Create;
       Dao.Save(TVistoriaBo.Create( AIdImovel,AIdPessoa, AData, AObeservacao));
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin

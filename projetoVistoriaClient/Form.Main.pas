@@ -20,6 +20,7 @@ type
     procedure Pessoa1Click(Sender: TObject);
     procedure Item1Click(Sender: TObject);
     procedure Imvel1Click(Sender: TObject);
+    procedure Vistoria1Click(Sender: TObject);
 
 
   private
@@ -35,7 +36,7 @@ implementation
 
 {$R *.dfm}
 uses
-  Form.User, Form.Pessoa, Form.Item, Form.Imovel;
+  Form.User, Form.Pessoa, Form.Item, Form.Imovel,Form.Vistoria;
 
 
 
@@ -103,6 +104,22 @@ begin
       finally
         Free;
         frmUser := nil;
+      end;
+  end;
+end;
+
+procedure TfrmMain.Vistoria1Click(Sender: TObject);
+begin
+  if not Assigned(frmVistoria) then
+    Application.CreateForm(TfrmVistoria, frmVistoria);
+
+  with frmVistoria do
+  begin
+      try
+        ShowModal;
+      finally
+        Free;
+        frmVistoria := nil;
       end;
   end;
 end;

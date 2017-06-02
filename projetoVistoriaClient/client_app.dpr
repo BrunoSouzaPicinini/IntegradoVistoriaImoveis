@@ -14,7 +14,8 @@ uses
   Pessoa in 'classes\Pessoa.pas',
   Vistoria in 'classes\Vistoria.pas',
   Form.Item in 'Form.Item.pas' {frmItem},
-  Form.Imovel in 'Form.Imovel.pas' {frmImovel};
+  Form.Imovel in 'Form.Imovel.pas' {frmImovel},
+  Form.Vistoria in 'Form.Vistoria.pas' {frmVistoria};
 
 {$R *.res}
 

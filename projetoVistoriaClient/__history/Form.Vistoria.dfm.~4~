@@ -1,0 +1,156 @@
+object frmVistoria: TfrmVistoria
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsSizeToolWin
+  Caption = 'Vistoria'
+  ClientHeight = 455
+  ClientWidth = 690
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblData: TLabel
+    Left = 200
+    Top = 32
+    Width = 33
+    Height = 13
+    Caption = 'lblData'
+  end
+  object pgcVistoria: TPageControl
+    Left = 0
+    Top = 0
+    Width = 690
+    Height = 455
+    ActivePage = tsCadastro
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 447
+    ExplicitHeight = 201
+    object tsCadastro: TTabSheet
+      Caption = 'Cadastro'
+      ExplicitLeft = 8
+      ExplicitTop = 28
+      object lblCodigo: TLabel
+        Left = 24
+        Top = 3
+        Width = 33
+        Height = 13
+        Caption = 'Codigo'
+      end
+      object Label1: TLabel
+        Left = 180
+        Top = 3
+        Width = 23
+        Height = 13
+        Caption = 'Data'
+      end
+      object lblObservacao: TLabel
+        Left = 24
+        Top = 109
+        Width = 58
+        Height = 13
+        Caption = 'Observacao'
+      end
+      object edtCodigo: TEdit
+        Left = 24
+        Top = 22
+        Width = 121
+        Height = 21
+        TabOrder = 0
+      end
+      object DateTimePicker1: TDateTimePicker
+        Left = 180
+        Top = 22
+        Width = 173
+        Height = 21
+        Date = 42888.040032175920000000
+        Time = 42888.040032175920000000
+        TabOrder = 1
+      end
+      object edtObservacao: TEdit
+        Left = 24
+        Top = 128
+        Width = 329
+        Height = 89
+        TabOrder = 2
+      end
+      object edtImovel: TEdit
+        Left = 108
+        Top = 72
+        Width = 245
+        Height = 21
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object dbcbbImovel: TDBComboBox
+        Left = 24
+        Top = 72
+        Width = 58
+        Height = 21
+        DataField = 'IdImovel'
+        DataSource = dsImovel
+        TabOrder = 4
+      end
+    end
+    object Consulta: TTabSheet
+      Caption = 'Consulta'
+      ImageIndex = 1
+      ExplicitWidth = 439
+      ExplicitHeight = 173
+    end
+  end
+  object dsImovel: TDataSource
+    DataSet = cdsImovel
+    Left = 540
+    Top = 72
+  end
+  object cdsImovel: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 604
+    Top = 72
+    object intgrfldImovelIdImovel: TIntegerField
+      FieldName = 'IdImovel'
+    end
+    object strngfldImovelquadra: TStringField
+      FieldName = 'quadra'
+      Size = 45
+    end
+    object strngfldImovellote: TStringField
+      FieldName = 'lote'
+      Size = 45
+    end
+    object fltfldImovelmetragemterreno: TFloatField
+      FieldName = 'metragemterreno'
+    end
+    object fltfldImovelmetragemimovel: TFloatField
+      FieldName = 'metragemimovel'
+    end
+    object strngfldImovellogradouro: TStringField
+      FieldName = 'logradouro'
+      Size = 45
+    end
+    object strngfldImovelbairro: TStringField
+      FieldName = 'bairro'
+      Size = 45
+    end
+    object strngfldImovelcomplemento: TStringField
+      FieldName = 'complemento'
+      Size = 45
+    end
+    object intgrfldImovelnumero: TIntegerField
+      FieldName = 'numero'
+    end
+    object strngfldImovelcep: TStringField
+      FieldName = 'cep'
+      Size = 45
+    end
+  end
+end

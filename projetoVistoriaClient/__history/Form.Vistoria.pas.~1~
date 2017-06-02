@@ -1,0 +1,49 @@
+unit Form.Vistoria;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient,
+  Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls;
+
+type
+  TForm2 = class(TForm)
+    pgcVistoria: TPageControl;
+    tsCadastro: TTabSheet;
+    Consulta: TTabSheet;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    lblData: TLabel;
+    Label1: TLabel;
+    DateTimePicker1: TDateTimePicker;
+    edtObservacao: TEdit;
+    lblObservacao: TLabel;
+    edtImovel: TEdit;
+    dbcbbImovel: TDBComboBox;
+    dsImovel: TDataSource;
+    cdsImovel: TClientDataSet;
+    intgrfldImovelIdImovel: TIntegerField;
+    strngfldImovelquadra: TStringField;
+    strngfldImovellote: TStringField;
+    fltfldImovelmetragemterreno: TFloatField;
+    fltfldImovelmetragemimovel: TFloatField;
+    strngfldImovellogradouro: TStringField;
+    strngfldImovelbairro: TStringField;
+    strngfldImovelcomplemento: TStringField;
+    intgrfldImovelnumero: TIntegerField;
+    strngfldImovelcep: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+end.

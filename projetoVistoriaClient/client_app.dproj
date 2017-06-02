@@ -112,6 +112,10 @@
             <Form>frmImovel</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Form.Vistoria.pas">
+            <Form>frmVistoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

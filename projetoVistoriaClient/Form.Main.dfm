@@ -43,6 +43,7 @@ object frmMain: TfrmMain
       Caption = 'Financeiro'
       object Vistoria1: TMenuItem
         Caption = 'Vistoria'
+        OnClick = Vistoria1Click
       end
     end
   end
