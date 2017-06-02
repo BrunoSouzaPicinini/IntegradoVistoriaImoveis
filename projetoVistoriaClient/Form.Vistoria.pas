@@ -43,13 +43,13 @@ type
     lblPessoa: TLabel;
     edtPessoa: TEdit;
     dbgrdItemVistoria: TDBGrid;
-    cdsItem: TClientDataSet;
-    intgrfldItemIdItem: TIntegerField;
-    strngfldItemDescricao: TStringField;
-    dsItem: TDataSource;
     dbcbbItem: TDBComboBox;
     edtItem: TEdit;
     btnAdd: TButton;
+    dsItem: TDataSource;
+    cdsItem: TClientDataSet;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemdescricao: TStringField;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

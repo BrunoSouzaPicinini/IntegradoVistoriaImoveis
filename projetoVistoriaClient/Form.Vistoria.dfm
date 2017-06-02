@@ -14,7 +14,7 @@ object frmVistoria: TfrmVistoria
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
-  OnCreate = FormShow
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lblData: TLabel
@@ -110,6 +110,7 @@ object frmVistoria: TfrmVistoria
         Top = 72
         Width = 249
         Height = 21
+        BevelWidth = 10
         DataField = 'logradouro'
         DataSource = dsImovel
         TabOrder = 3
@@ -119,6 +120,7 @@ object frmVistoria: TfrmVistoria
         Top = 122
         Width = 249
         Height = 21
+        BevelWidth = 10
         DataField = 'Nome'
         DataSource = dsPessoa
         TabOrder = 5
@@ -244,22 +246,22 @@ object frmVistoria: TfrmVistoria
     Left = 432
     Top = 112
   end
+  object dsItem: TDataSource
+    DataSet = cdsItem
+    Left = 532
+    Top = 208
+  end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 648
-    Top = 176
+    Left = 596
+    Top = 208
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
     end
-    object strngfldItemDescricao: TStringField
-      FieldName = 'Descricao'
+    object strngfldItemdescricao: TStringField
+      FieldName = 'descricao'
       Size = 45
     end
-  end
-  object dsItem: TDataSource
-    DataSet = cdsItem
-    Left = 600
-    Top = 176
   end
 end
