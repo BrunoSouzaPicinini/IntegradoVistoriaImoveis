@@ -117,10 +117,10 @@ var
   i: Integer;
 begin
   if not cdsPessoa.Active then
-    cdsPessoa.CreateDataSet;
-
+  cdsPessoa.CreateDataSet;
+  cdsPessoa.Open;
   cdsPessoa.EmptyDataSet;
-
+  cdsPessoa.First;
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
   try
     JArray := APessoaClient.getAllPessoa();
@@ -132,11 +132,14 @@ begin
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
 
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
+
       finally
         APessoa.Free;
       end;
     end;
+
   finally
+    cdsPessoa.First;
     FreeAndNil(APessoaClient);
   end;
 end;

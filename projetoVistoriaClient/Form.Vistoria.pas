@@ -70,6 +70,8 @@ AImovelClient : TsmImovelClient;
 APessoaClient : TsmPessoaClient;
 AItemClient : TsmItemClient;
 
+
+
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
   getAllImovel;
@@ -117,10 +119,10 @@ var
   i: Integer;
 begin
   if not cdsPessoa.Active then
-    cdsPessoa.CreateDataSet;
+  cdsPessoa.CreateDataSet;
 
   cdsPessoa.EmptyDataSet;
-
+  cdsPessoa.Last;
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
   try
     JArray := APessoaClient.getAllPessoa();
@@ -132,11 +134,14 @@ begin
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
 
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
+
       finally
         APessoa.Free;
       end;
     end;
+
   finally
+    cdsPessoa.First;
     FreeAndNil(APessoaClient);
   end;
 end;

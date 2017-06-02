@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,Item,
   Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls,Client.Classes, Client.Module, System.json,
   Vcl.Grids, Vcl.DBGrids;
 
@@ -43,19 +43,20 @@ type
     lblPessoa: TLabel;
     edtPessoa: TEdit;
     dbgrdItemVistoria: TDBGrid;
-    cdsItem: TClientDataSet;
-    intgrfldItemIdItem: TIntegerField;
-    strngfldItemDescricao: TStringField;
-    dsItem: TDataSource;
     dbcbbItem: TDBComboBox;
     edtItem: TEdit;
     btnAdd: TButton;
+    dsItem: TDataSource;
+    cdsItem: TClientDataSet;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemdescricao: TStringField;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     procedure getAllImovel();
     procedure getAllPessoa();
+    procedure getAllItem();
   end;
 
 var
@@ -67,11 +68,15 @@ implementation
 var
 AImovelClient : TsmImovelClient;
 APessoaClient : TsmPessoaClient;
+AItemClient : TsmItemClient;
+
+
 
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
   getAllImovel;
   getAllPessoa;
+  getAllItem;
 end;
 
 procedure TfrmVistoria.getAllImovel;
@@ -114,10 +119,11 @@ var
   i: Integer;
 begin
   if not cdsPessoa.Active then
-    cdsPessoa.CreateDataSet;
+  cdsPessoa.CreateDataSet;
 
   cdsPessoa.EmptyDataSet;
-
+  cdsPessoa.Open;
+  cdsPessoa.Last;
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
   try
     JArray := APessoaClient.getAllPessoa();
@@ -129,12 +135,47 @@ begin
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
 
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
+
       finally
         APessoa.Free;
       end;
     end;
+
   finally
+    cdsPessoa.First;
     FreeAndNil(APessoaClient);
+  end;
+end;
+
+
+procedure TfrmVistoria.getAllItem;
+var
+  AItem: TItem;
+  JArray: TJSONArray;
+  i: Integer;
+begin
+  if not cdsItem.Active then
+    cdsItem.CreateDataSet;
+
+  cdsItem.EmptyDataSet;
+
+  AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
+  try
+    JArray := AItemClient.getAllItem();
+
+    for i := 0 to JArray.Size -1 do
+    begin
+      AItem := TItem.Create;
+      try
+        AItem := TItem.JSONToObject<TItem>(JArray.Get(i));
+
+        cdsItem.InsertRecord([AItem.IdItem, AItem.Descricao]);
+      finally
+        AItem.Free;
+      end;
+    end;
+  finally
+    FreeAndNil(AItemClient);
   end;
 end;
 

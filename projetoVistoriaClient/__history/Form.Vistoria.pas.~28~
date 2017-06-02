@@ -43,13 +43,13 @@ type
     lblPessoa: TLabel;
     edtPessoa: TEdit;
     dbgrdItemVistoria: TDBGrid;
-    cdsItem: TClientDataSet;
-    intgrfldItemIdItem: TIntegerField;
-    strngfldItemDescricao: TStringField;
-    dsItem: TDataSource;
     dbcbbItem: TDBComboBox;
     edtItem: TEdit;
     btnAdd: TButton;
+    dsItem: TDataSource;
+    cdsItem: TClientDataSet;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemdescricao: TStringField;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -117,8 +117,8 @@ var
   i: Integer;
 begin
   if not cdsPessoa.Active then
-    cdsPessoa.CreateDataSet;
-
+  cdsPessoa.CreateDataSet;
+  cdsPessoa.Open;
   cdsPessoa.EmptyDataSet;
 
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
@@ -132,11 +132,14 @@ begin
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
 
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
+
       finally
         APessoa.Free;
       end;
     end;
+
   finally
+    cdsPessoa.First;
     FreeAndNil(APessoaClient);
   end;
 end;

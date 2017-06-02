@@ -4,8 +4,8 @@ object frmVistoria: TfrmVistoria
   Align = alClient
   BorderStyle = bsSizeToolWin
   Caption = 'Vistoria'
-  ClientHeight = 455
-  ClientWidth = 690
+  ClientHeight = 500
+  ClientWidth = 717
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,6 +14,7 @@ object frmVistoria: TfrmVistoria
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lblData: TLabel
@@ -26,8 +27,8 @@ object frmVistoria: TfrmVistoria
   object pgcVistoria: TPageControl
     Left = 0
     Top = 0
-    Width = 690
-    Height = 455
+    Width = 717
+    Height = 500
     ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
@@ -52,8 +53,8 @@ object frmVistoria: TfrmVistoria
         Caption = 'Data'
       end
       object lblObservacao: TLabel
-        Left = 24
-        Top = 149
+        Left = 368
+        Top = 3
         Width = 58
         Height = 13
         Caption = 'Observacao'
@@ -89,43 +90,88 @@ object frmVistoria: TfrmVistoria
         TabOrder = 1
       end
       object edtObservacao: TEdit
-        Left = 24
-        Top = 168
+        Left = 368
+        Top = 22
         Width = 329
-        Height = 89
+        Height = 121
         TabOrder = 2
       end
       object edtImovel: TEdit
-        Left = 108
+        Left = 288
         Top = 72
-        Width = 245
+        Width = 65
         Height = 21
         ReadOnly = True
-        TabOrder = 3
+        TabOrder = 4
+        Visible = False
       end
       object dbcbbImovel: TDBComboBox
         Left = 24
         Top = 72
-        Width = 73
+        Width = 249
         Height = 21
-        DataField = 'IdImovel'
+        BevelWidth = 10
+        DataField = 'logradouro'
         DataSource = dsImovel
-        TabOrder = 4
+        TabOrder = 3
       end
       object dbcbbPessoa: TDBComboBox
         Left = 24
         Top = 122
-        Width = 73
+        Width = 249
         Height = 21
+        BevelWidth = 10
+        DataField = 'Nome'
+        DataSource = dsPessoa
         TabOrder = 5
       end
       object edtPessoa: TEdit
-        Left = 108
+        Left = 288
         Top = 122
-        Width = 245
+        Width = 65
         Height = 21
         ReadOnly = True
         TabOrder = 6
+        Visible = False
+      end
+      object dbgrdItemVistoria: TDBGrid
+        Left = 24
+        Top = 256
+        Width = 673
+        Height = 201
+        TabOrder = 7
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+      object dbcbbItem: TDBComboBox
+        Left = 24
+        Top = 216
+        Width = 249
+        Height = 21
+        DataField = 'Descricao'
+        DataSource = dsItem
+        TabOrder = 8
+      end
+      object edtItem: TEdit
+        Left = 288
+        Top = 216
+        Width = 65
+        Height = 21
+        ReadOnly = True
+        TabOrder = 9
+        Text = 'edtItem'
+        Visible = False
+      end
+      object btnAdd: TButton
+        Left = 368
+        Top = 214
+        Width = 75
+        Height = 25
+        Caption = '+'
+        TabOrder = 10
       end
     end
     object Consulta: TTabSheet
@@ -137,14 +183,14 @@ object frmVistoria: TfrmVistoria
   end
   object dsImovel: TDataSource
     DataSet = cdsImovel
-    Left = 540
-    Top = 72
+    Left = 428
+    Top = 64
   end
   object cdsImovel: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 604
-    Top = 72
+    Left = 500
+    Top = 64
     object intgrfldImovelIdImovel: TIntegerField
       FieldName = 'IdImovel'
     end
@@ -185,8 +231,8 @@ object frmVistoria: TfrmVistoria
   object cdsPessoa: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 608
-    Top = 160
+    Left = 496
+    Top = 112
     object intgrfldPessoaIdPessoa: TIntegerField
       FieldName = 'IdPessoa'
     end
@@ -197,7 +243,25 @@ object frmVistoria: TfrmVistoria
   end
   object dsPessoa: TDataSource
     DataSet = cdsPessoa
-    Left = 544
-    Top = 160
+    Left = 432
+    Top = 112
+  end
+  object dsItem: TDataSource
+    DataSet = cdsItem
+    Left = 532
+    Top = 208
+  end
+  object cdsItem: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 596
+    Top = 208
+    object intgrfldItemIdItem: TIntegerField
+      FieldName = 'IdItem'
+    end
+    object strngfldItemdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 45
+    end
   end
 end

@@ -51,6 +51,7 @@ type
     intgrfldItemIdItem: TIntegerField;
     strngfldItemdescricao: TStringField;
     procedure FormShow(Sender: TObject);
+    procedure dbcbbPessoaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,13 +64,17 @@ var
   frmVistoria: TfrmVistoria;
 
 implementation
-uses
-DBXJSON;
+
 {$R *.dfm}
 var
 AImovelClient : TsmImovelClient;
 APessoaClient : TsmPessoaClient;
 AItemClient : TsmItemClient;
+
+procedure TfrmVistoria.dbcbbPessoaClick(Sender: TObject);
+begin
+  cdShowHelp.cdFullOpen;
+end;
 
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
@@ -118,10 +123,11 @@ var
   i: Integer;
 begin
   if not cdsPessoa.Active then
-    cdsPessoa.CreateDataSet;
+  cdsPessoa.CreateDataSet;
 
   cdsPessoa.EmptyDataSet;
-
+  cdsPessoa.Open;
+  cdsPessoa.Last;
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
   try
     JArray := APessoaClient.getAllPessoa();
@@ -133,11 +139,14 @@ begin
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
 
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
+
       finally
         APessoa.Free;
       end;
     end;
+
   finally
+    cdsPessoa.First;
     FreeAndNil(APessoaClient);
   end;
 end;
