@@ -12,7 +12,9 @@ uses
   Item in 'classes\Item.pas',
   ItemVistoria in 'classes\ItemVistoria.pas',
   Pessoa in 'classes\Pessoa.pas',
-  Vistoria in 'classes\Vistoria.pas';
+  Vistoria in 'classes\Vistoria.pas',
+  Form.Item in 'Form.Item.pas' {frmItem},
+  Form.Imovel in 'Form.Imovel.pas' {frmImovel};
 
 {$R *.res}
 

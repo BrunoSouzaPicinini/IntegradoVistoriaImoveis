@@ -62,7 +62,7 @@ object frmItem: TfrmItem
         Width = 75
         Height = 25
         Caption = 'Alterar'
-        TabOrder = 2
+        TabOrder = 3
         OnClick = btnAlterarClick
       end
       object btnExcluir: TButton
@@ -71,16 +71,16 @@ object frmItem: TfrmItem
         Width = 75
         Height = 25
         Caption = 'Excluir'
-        TabOrder = 3
+        TabOrder = 4
         OnClick = btnExcluirClick
       end
       object btnGravar: TButton
-        Left = 306
+        Left = 16
         Top = 136
         Width = 75
         Height = 25
         Caption = 'Gravar'
-        TabOrder = 4
+        TabOrder = 2
         OnClick = btnGravarClick
       end
     end

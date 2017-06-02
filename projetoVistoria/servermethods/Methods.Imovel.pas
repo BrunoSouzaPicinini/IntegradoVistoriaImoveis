@@ -51,7 +51,7 @@ begin
         AComplemento, ACep, AMetragemTerreno, AMetragemImovel,ANumero);
 
       Dao.Save(Imovel);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCESS_ACCEPTED;
     except
       on e: Exception do
       begin
@@ -71,7 +71,7 @@ begin
     try
       Dao := TImovelDao.Create;
       Dao.Delete(AIdImovel);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin
@@ -141,7 +141,7 @@ begin
       Dao.Save(TImovelBo.Create(AQuadra, ALote, ALogradouro, ABairro,
         AComplemento,  ACep, AMetragemTerreno, AMetragemImovel,ANumero));
 
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin

@@ -1,0 +1,122 @@
+unit Form.Imovel;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.ComCtrls,Imovel,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,Client.Classes, Client.Module, System.json;
+
+type
+  TfrmImovel = class(TForm)
+    pgcImovel: TPageControl;
+    tsCadastro: TTabSheet;
+    tsConsulta: TTabSheet;
+    dsImovel: TDataSource;
+    cdsImovel: TClientDataSet;
+    grdImovel: TDBGrid;
+    intgrfldImovelIdImovel: TIntegerField;
+    strngfldImovelquadra: TStringField;
+    strngfldImovellote: TStringField;
+    fltfldImovelmetragemterreno: TFloatField;
+    fltfldImovelmetragemimovel: TFloatField;
+    strngfldImovellogradouro: TStringField;
+    strngfldImovelcomplemento: TStringField;
+    intgrfldImovelnumero: TIntegerField;
+    strngfldImovelcep: TStringField;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    btnAlterar: TButton;
+    btnExcluir: TButton;
+    btnGravar: TButton;
+    edtQuadra: TEdit;
+    lblQuadra: TLabel;
+    edtLote: TEdit;
+    edtMetragemTerreno: TEdit;
+    edtMetragemImovel: TEdit;
+    edtLogradouro: TEdit;
+    edtBairro: TEdit;
+    edtComplemento: TEdit;
+    edtNumero: TEdit;
+    edtCep: TEdit;
+    lblBairro: TLabel;
+    lblComplemento: TLabel;
+    lblCep: TLabel;
+    Número: TLabel;
+    lblMetragemTerreno: TLabel;
+    lblLote: TLabel;
+    lblMetragemImovel: TLabel;
+    lblLogradouro: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure btnAlterarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure getAllImovel();
+  end;
+
+var
+  frmImovel: TfrmImovel;
+
+implementation
+
+{$R *.dfm}
+var
+AImovelClient : TsmImovelClient;
+
+procedure TfrmImovel.btnAlterarClick(Sender: TObject);
+begin
+   try
+      AImovelClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      AImovelClient.acceptImovel(StrToInt(edtCodigo.Text),edtQuadra.Text,edtLote.Text,
+      edtLogradouro.Text,edtBairro.Text,edtComplemento.Text,edtCep.Text,
+      StrToFloat(edtMetragemTerreno.Text),StrToFloat(edtMetragemImovel.Text),StrToInt(edtNumero.Text) );
+    finally
+      FreeAndNil(AImovelClient);
+    end;
+end;
+
+procedure TfrmImovel.btnExcluirClick(Sender: TObject);
+begin
+  try
+      APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      APessoaClient.deleteUser(StrToInt(edtCodigo.Text) );
+    finally
+      FreeAndNil(APessoaClient);
+    end;
+end;
+
+procedure TfrmImovel.getAllImovel;
+var
+  AImovel: TImovel;
+  JArray: TJSONArray;
+  i: Integer;
+begin
+  if not cdsImovel.Active then
+    cdsImovel.CreateDataSet;
+
+  cdsImovel.EmptyDataSet;
+
+  AImovelClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+  try
+    JArray := AImovelClient.getAllImovel();
+
+    for i := 0 to JArray.Size -1 do
+    begin
+      AImovel := TImovel.Create;
+      try
+        AImovel := TImovel.JSONToObject<TImovel>(JArray.Get(i));
+
+        cdsImovel.InsertRecord([AImovel.IdImovel, AImovel.Quadra, AImovel.Lote,AImovel.MetragemTerreno,
+        AImovel.MetragemImovel,AImovel.Logradouro,AImovel.Bairro,AImovel.Complemento,AImovel.Numero,AImovel.Cep]);
+      finally
+        AImovel.Free;
+      end;
+    end;
+  finally
+    FreeAndNil(AImovelClient);
+  end;
+end;
+
+end.

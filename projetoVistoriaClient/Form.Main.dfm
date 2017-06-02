@@ -32,6 +32,7 @@ object frmMain: TfrmMain
       end
       object Imvel1: TMenuItem
         Caption = 'Im'#243'vel'
+        OnClick = Imvel1Click
       end
       object Item1: TMenuItem
         Caption = 'Item'

@@ -19,6 +19,7 @@ type
     procedure Usurio1Click(Sender: TObject);
     procedure Pessoa1Click(Sender: TObject);
     procedure Item1Click(Sender: TObject);
+    procedure Imvel1Click(Sender: TObject);
 
 
   private
@@ -34,13 +35,29 @@ implementation
 
 {$R *.dfm}
 uses
-  Form.User, Form.Pessoa, Form.Item;
+  Form.User, Form.Pessoa, Form.Item, Form.Imovel;
 
 
 
 
 
 { TfrmMain }
+
+procedure TfrmMain.Imvel1Click(Sender: TObject);
+begin
+if not Assigned(frmImovel) then
+    Application.CreateForm(TfrmImovel, frmImovel);
+
+  with frmImovel do
+  begin
+      try
+        ShowModal;
+      finally
+        Free;
+        frmImovel := nil;
+      end;
+  end;
+end;
 
 procedure TfrmMain.Item1Click(Sender: TObject);
 begin

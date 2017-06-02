@@ -43,12 +43,12 @@ object frmPessoa: TfrmPessoa
         Caption = 'Nome'
       end
       object btnGravar: TButton
-        Left = 282
+        Left = 16
         Top = 136
         Width = 75
         Height = 25
         Caption = 'Gravar'
-        TabOrder = 0
+        TabOrder = 2
         OnClick = btnGravarClick
       end
       object edtCodigo: TEdit
@@ -56,17 +56,17 @@ object frmPessoa: TfrmPessoa
         Top = 22
         Width = 121
         Height = 21
-        TabOrder = 1
+        TabOrder = 0
       end
       object edtNome: TEdit
         Left = 16
         Top = 68
         Width = 121
         Height = 21
-        TabOrder = 2
+        TabOrder = 1
       end
       object btnAlterar: TButton
-        Left = 89
+        Left = 112
         Top = 136
         Width = 75
         Height = 25
@@ -75,7 +75,7 @@ object frmPessoa: TfrmPessoa
         OnClick = btnAlterarClick
       end
       object btnExcluir: TButton
-        Left = 185
+        Left = 209
         Top = 136
         Width = 75
         Height = 25
