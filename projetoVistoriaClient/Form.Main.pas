@@ -18,6 +18,7 @@ type
     Item1: TMenuItem;
     procedure Usurio1Click(Sender: TObject);
     procedure Pessoa1Click(Sender: TObject);
+    procedure Item1Click(Sender: TObject);
 
 
   private
@@ -33,13 +34,29 @@ implementation
 
 {$R *.dfm}
 uses
-  Form.User, Form.Pessoa;
+  Form.User, Form.Pessoa, Form.Item;
 
 
 
 
 
 { TfrmMain }
+
+procedure TfrmMain.Item1Click(Sender: TObject);
+begin
+if not Assigned(frmItem) then
+    Application.CreateForm(TfrmItem, frmItem);
+
+  with frmItem do
+  begin
+      try
+        ShowModal;
+      finally
+        Free;
+        frmItem := nil;
+      end;
+  end;
+end;
 
 procedure TfrmMain.Pessoa1Click(Sender: TObject);
 begin

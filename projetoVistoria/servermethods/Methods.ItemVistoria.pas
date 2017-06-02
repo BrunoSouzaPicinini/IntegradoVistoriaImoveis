@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth,
   System.JSON, Datasnap.DSProviderDataModuleAdapter,DBXPlatform,
-  Dao.ItemVistoria, Bo.ItemVistoria,Vistoria,
+  Dao.ItemVistoria, Bo.ItemVistoria,Vistoria,ItemVistoria,
   HttpStatusCode;
 
 type

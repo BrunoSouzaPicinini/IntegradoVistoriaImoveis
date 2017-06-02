@@ -14,6 +14,7 @@ object frmItem: TfrmItem
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pgcItem: TPageControl
@@ -24,12 +25,9 @@ object frmItem: TfrmItem
     ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -16
+    OnChange = FormShow
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitWidth = 439
-      ExplicitHeight = 173
       object lblCodigo: TLabel
         Left = 16
         Top = 3
@@ -65,6 +63,7 @@ object frmItem: TfrmItem
         Height = 25
         Caption = 'Alterar'
         TabOrder = 2
+        OnClick = btnAlterarClick
       end
       object btnExcluir: TButton
         Left = 209
@@ -73,6 +72,7 @@ object frmItem: TfrmItem
         Height = 25
         Caption = 'Excluir'
         TabOrder = 3
+        OnClick = btnExcluirClick
       end
       object btnGravar: TButton
         Left = 306
@@ -81,13 +81,12 @@ object frmItem: TfrmItem
         Height = 25
         Caption = 'Gravar'
         TabOrder = 4
+        OnClick = btnGravarClick
       end
     end
     object Consulta: TTabSheet
       Caption = 'Consulta'
       ImageIndex = 1
-      ExplicitWidth = 439
-      ExplicitHeight = 173
       object grdItem: TDBGrid
         Left = 0
         Top = 0

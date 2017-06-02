@@ -35,6 +35,7 @@ object frmMain: TfrmMain
       end
       object Item1: TMenuItem
         Caption = 'Item'
+        OnClick = Item1Click
       end
     end
     object Financeiro1: TMenuItem

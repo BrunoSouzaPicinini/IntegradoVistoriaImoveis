@@ -51,7 +51,7 @@ type
     FgetAllItemCommand: TDSRestCommand;
     FgetAllItemCommand_Cache: TDSRestCommand;
     FupdateItemCommand: TDSRestCommand;
-    FacceptPessoaCommand: TDSRestCommand;
+    FacceptItemCommand: TDSRestCommand;
     FdeleteItemCommand: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
@@ -62,7 +62,7 @@ type
     function getAllItem(const ARequestFilter: string = ''): TJSONArray;
     function getAllItem_Cache(const ARequestFilter: string = ''): IDSRestCachedJSONArray;
     procedure updateItem(ADescricao: string);
-    procedure acceptPessoa(ADescricao: string; AIdItem: Integer);
+    procedure acceptItem(ADescricao: string; AIdItem: Integer);
     procedure deleteItem(AidItem: Integer);
   end;
 
@@ -194,7 +194,7 @@ const
     (Name: 'ADescricao'; Direction: 1; DBXType: 26; TypeName: 'string')
   );
 
-  TsmItem_acceptPessoa: array [0..1] of TDSRestParameterMetaData =
+  TsmItem_acceptItem: array [0..1] of TDSRestParameterMetaData =
   (
     (Name: 'ADescricao'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: 'AIdItem'; Direction: 1; DBXType: 6; TypeName: 'Integer')
@@ -531,18 +531,18 @@ begin
   FupdateItemCommand.Execute;
 end;
 
-procedure TsmItemClient.acceptPessoa(ADescricao: string; AIdItem: Integer);
+procedure TsmItemClient.acceptItem(ADescricao: string; AIdItem: Integer);
 begin
-  if FacceptPessoaCommand = nil then
+  if FacceptItemCommand = nil then
   begin
-    FacceptPessoaCommand := FConnection.CreateCommand;
-    FacceptPessoaCommand.RequestType := 'GET';
-    FacceptPessoaCommand.Text := 'TsmItem.acceptPessoa';
-    FacceptPessoaCommand.Prepare(TsmItem_acceptPessoa);
+    FacceptItemCommand := FConnection.CreateCommand;
+    FacceptItemCommand.RequestType := 'GET';
+    FacceptItemCommand.Text := 'TsmItem.acceptItem';
+    FacceptItemCommand.Prepare(TsmItem_acceptItem);
   end;
-  FacceptPessoaCommand.Parameters[0].Value.SetWideString(ADescricao);
-  FacceptPessoaCommand.Parameters[1].Value.SetInt32(AIdItem);
-  FacceptPessoaCommand.Execute;
+  FacceptItemCommand.Parameters[0].Value.SetWideString(ADescricao);
+  FacceptItemCommand.Parameters[1].Value.SetInt32(AIdItem);
+  FacceptItemCommand.Execute;
 end;
 
 procedure TsmItemClient.deleteItem(AidItem: Integer);
@@ -575,7 +575,7 @@ begin
   FgetAllItemCommand.DisposeOf;
   FgetAllItemCommand_Cache.DisposeOf;
   FupdateItemCommand.DisposeOf;
-  FacceptPessoaCommand.DisposeOf;
+  FacceptItemCommand.DisposeOf;
   FdeleteItemCommand.DisposeOf;
   inherited;
 end;

@@ -1,0 +1,53 @@
+unit Form.Item;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,Item,
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.StdCtrls,Client.Classes, Client.Module, System.json;
+
+type
+  TfrmItem = class(TForm)
+    pgcItem: TPageControl;
+    tsCadastro: TTabSheet;
+    Consulta: TTabSheet;
+    grdItem: TDBGrid;
+    cdsItem: TClientDataSet;
+    dsItem: TDataSource;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemDescricao: TStringField;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    lblNome: TLabel;
+    edtNome: TEdit;
+    btnAlterar: TButton;
+    btnExcluir: TButton;
+    btnGravar: TButton;
+    procedure btnAlterarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmItem: TfrmItem;
+
+implementation
+var
+AItemClient : TsmItemClient;
+{$R *.dfm}
+
+
+procedure TfrmItem.btnAlterarClick(Sender: TObject);
+begin
+  try
+      AItemClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      AItemClient.acceptPessoa(edtNome.Text ,StrToInt(edtCodigo.Text) );
+    finally
+      FreeAndNil(AItemClient);
+    end;
+end;
+
+end.

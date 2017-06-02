@@ -1,0 +1,113 @@
+unit Form.Item;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,Item,
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.StdCtrls,Client.Classes, Client.Module, System.json;
+
+type
+  TfrmItem = class(TForm)
+    pgcItem: TPageControl;
+    tsCadastro: TTabSheet;
+    Consulta: TTabSheet;
+    grdItem: TDBGrid;
+    cdsItem: TClientDataSet;
+    dsItem: TDataSource;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemDescricao: TStringField;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    lblNome: TLabel;
+    edtNome: TEdit;
+    btnAlterar: TButton;
+    btnExcluir: TButton;
+    btnGravar: TButton;
+    procedure btnAlterarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure getAllItem();
+  end;
+
+var
+  frmItem: TfrmItem;
+
+implementation
+var
+AItemClient : TsmItemClient;
+{$R *.dfm}
+
+
+procedure TfrmItem.btnAlterarClick(Sender: TObject);
+begin
+  try
+      AItemClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      AItemClient.acceptPessoa(edtNome.Text ,StrToInt(edtCodigo.Text) );
+    finally
+      FreeAndNil(AItemClient);
+    end;
+end;
+
+procedure TfrmItem.btnExcluirClick(Sender: TObject);
+begin
+    try
+      AItemClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      AItemClient.deleteItem(StrToInt(edtCodigo.Text) );
+    finally
+      FreeAndNil(AItemClient);
+    end;
+end;
+
+procedure TfrmItem.btnGravarClick(Sender: TObject);
+begin
+    try
+      AItemClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+      AItemClient.updateItem(edtNome.Text);
+    finally
+      FreeAndNil(AItemClient);
+    end;
+end;
+
+procedure TfrmItem.FormShow(Sender: TObject);
+begin
+  getAllItem;
+end;
+
+procedure TfrmItem.getAllItem;
+var
+  AItem: TItem;
+  JArray: TJSONArray;
+  i: Integer;
+begin
+  if not cdsItem.Active then
+    cdsItem.CreateDataSet;
+
+  cdsItem.EmptyDataSet;
+
+  AItemClient := TsmPessoaClient.Create(ClientModule.dsConnection);
+  try
+    JArray := AItemClient.getAllItem();
+
+    for i := 0 to JArray.Size -1 do
+    begin
+      AItem := TItem.Create;
+      try
+        AItem := TItem.JSONToObject<TItem>(JArray.Get(i));
+
+        cdsItem.InsertRecord([AItem.IdItem, AItem.Descricao]);
+      finally
+        AItem.Free;
+      end;
+    end;
+  finally
+    FreeAndNil(AItemClient);
+  end;
+end;
+
+
+end.

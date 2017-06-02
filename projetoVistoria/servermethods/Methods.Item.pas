@@ -14,7 +14,7 @@ type
     function getItem(AIdItem : Integer): TJSONValue;
     function getAllItem():TJSONArray;
     procedure updateItem(ADescricao : string);
-    procedure acceptPessoa(ADescricao : string; AIdItem : Integer);
+    procedure acceptItem(ADescricao : string; AIdItem : Integer);
     procedure deleteItem(AidItem: Integer);
   end;
 
@@ -26,18 +26,18 @@ uses Dao.Item,Bo.Item ,HttpStatusCode;
 
 { TsmItem }
 
-procedure TsmItem.acceptPessoa(ADescricao: string; AIdItem: Integer);
+procedure TsmItem.acceptItem( ADescricao: string; AIdItem: Integer);
 var
   Dao : TItemDao;
-  Item : TItem;
+  AItem : TItem;
 begin
   try
     try
       Dao := TItemDao.Create;
-      Item := Dao.Read(AIdItem);
-      TItemBo.Update(Item, ADescricao);
-      Dao.Save(Item);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      AItem := Dao.Read(AIdItem);
+      TItemBo.Update(AItem, ADescricao);
+      Dao.Save(AItem);
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e : Exception do
       begin
@@ -46,7 +46,6 @@ begin
     end;
   finally
     Dao.Free;
-    Item.Free;
   end;
 end;
 
@@ -59,7 +58,7 @@ begin
       Dao := TItemDao.Create;
       Dao.Delete(AIdItem);
 
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin
@@ -124,7 +123,7 @@ begin
     try
       Dao := TItemDao.Create;
       Dao.Save(TItemBo.Create(ADescricao));
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_NO_CONTENT;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e : Exception do
       begin
