@@ -13,8 +13,8 @@ type
   private
     { Private declarations }
   public
-    procedure updateVistoria(AIdPessoa, AIdImovel: Integer;
-      AData, AObeservacao: string); // Post - Create
+    function updateVistoria(AIdPessoa, AIdImovel: Integer;
+      AData, AObeservacao: string): TVistoria; // Post - Create
     //
     procedure acceptVistoria(AIdVistoria, AIdImovel, AIdPessoa: Integer;
       AData, AObservacao: string); // PutUpdate
@@ -76,8 +76,8 @@ begin
   end;
 end;
 
-procedure TsmVistoria.updateVistoria(AIdPessoa, AIdImovel: Integer;
-  AData, AObeservacao: string);
+function TsmVistoria.updateVistoria(AIdPessoa, AIdImovel: Integer;
+  AData, AObeservacao: string) : TVistoria;
 var
   Dao: TVistoriaDao;
   Vistoria: TVistoria;
@@ -85,7 +85,7 @@ begin
   try
     try
       Dao := TVistoriaDao.Create;
-      Dao.Save(TVistoriaBo.Create( AIdImovel,AIdPessoa, AData, AObeservacao));
+      Vistoria := Dao.Save(TVistoriaBo.Create( AIdImovel,AIdPessoa, AData, AObeservacao));
       GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do

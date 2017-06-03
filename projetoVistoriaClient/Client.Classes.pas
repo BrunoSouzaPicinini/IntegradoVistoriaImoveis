@@ -1,15 +1,18 @@
 //
 // Created by the DataSnap proxy generator.
-// 31/05/2017 19:55:57
+// 03/06/2017 18:03:56
 //
 
 unit Client.Classes;
 
 interface
 
-uses System.JSON, Datasnap.DSProxyRest, Datasnap.DSClientRest, Data.DBXCommon, Data.DBXClient, Data.DBXDataSnap, Data.DBXJSON, Datasnap.DSProxy, System.Classes, System.SysUtils, Data.DB, Data.SqlExpr, Data.DBXDBReaders, Data.DBXCDSReaders, Data.DBXJSONReflect;
+uses System.JSON, Datasnap.DSProxyRest, Datasnap.DSClientRest, Data.DBXCommon, Data.DBXClient, Data.DBXDataSnap, Data.DBXJSON, Datasnap.DSProxy, System.Classes, System.SysUtils, Data.DB, Data.SqlExpr, Data.DBXDBReaders, Data.DBXCDSReaders, Vistoria, Data.DBXJSONReflect;
 
 type
+
+  IDSRestCachedTVistoria = interface;
+
   TsmTesteClient = class(TDSAdminRestClient)
   private
     FEchoStringCommand: TDSRestCommand;
@@ -91,13 +94,15 @@ type
   TsmVistoriaClient = class(TDSAdminRestClient)
   private
     FupdateVistoriaCommand: TDSRestCommand;
+    FupdateVistoriaCommand_Cache: TDSRestCommand;
     FacceptVistoriaCommand: TDSRestCommand;
     FcancelVistoriaCommand: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
-    procedure updateVistoria(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string);
+    function updateVistoria(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string; const ARequestFilter: string = ''): TVistoria;
+    function updateVistoria_Cache(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string; const ARequestFilter: string = ''): IDSRestCachedTVistoria;
     procedure acceptVistoria(AIdVistoria: Integer; AIdImovel: Integer; AIdPessoa: Integer; AData: string; AObservacao: string);
     procedure cancelVistoria(AIdVistoria: Integer);
   end;
@@ -114,6 +119,12 @@ type
     procedure updateItemVistoria(AIdVistoria: Integer; AIdItem: Integer; AObservacao: string);
     procedure acceptItemVistoria(AIdItemVistoria: Integer; AIdVistoria: Integer; AIdItem: Integer; AObservacao: string);
     procedure cancelItemVistoria(AIdItemVistoria: Integer);
+  end;
+
+  IDSRestCachedTVistoria = interface(IDSRestCachedObject<TVistoria>)
+  end;
+
+  TDSRestCachedTVistoria = class(TDSRestCachedObject<TVistoria>, IDSRestCachedTVistoria, IDSRestCachedCommand)
   end;
 
 const
@@ -259,12 +270,22 @@ const
     (Name: 'AIdImovel'; Direction: 1; DBXType: 6; TypeName: 'Integer')
   );
 
-  TsmVistoria_updateVistoria: array [0..3] of TDSRestParameterMetaData =
+  TsmVistoria_updateVistoria: array [0..4] of TDSRestParameterMetaData =
   (
     (Name: 'AIdPessoa'; Direction: 1; DBXType: 6; TypeName: 'Integer'),
     (Name: 'AIdImovel'; Direction: 1; DBXType: 6; TypeName: 'Integer'),
     (Name: 'AData'; Direction: 1; DBXType: 26; TypeName: 'string'),
-    (Name: 'AObeservacao'; Direction: 1; DBXType: 26; TypeName: 'string')
+    (Name: 'AObeservacao'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 37; TypeName: 'TVistoria')
+  );
+
+  TsmVistoria_updateVistoria_Cache: array [0..4] of TDSRestParameterMetaData =
+  (
+    (Name: 'AIdPessoa'; Direction: 1; DBXType: 6; TypeName: 'Integer'),
+    (Name: 'AIdImovel'; Direction: 1; DBXType: 6; TypeName: 'Integer'),
+    (Name: 'AData'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'AObeservacao'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
   );
 
   TsmVistoria_acceptVistoria: array [0..4] of TDSRestParameterMetaData =
@@ -712,7 +733,7 @@ begin
   inherited;
 end;
 
-procedure TsmVistoriaClient.updateVistoria(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string);
+function TsmVistoriaClient.updateVistoria(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string; const ARequestFilter: string): TVistoria;
 begin
   if FupdateVistoriaCommand = nil then
   begin
@@ -725,7 +746,37 @@ begin
   FupdateVistoriaCommand.Parameters[1].Value.SetInt32(AIdImovel);
   FupdateVistoriaCommand.Parameters[2].Value.SetWideString(AData);
   FupdateVistoriaCommand.Parameters[3].Value.SetWideString(AObeservacao);
-  FupdateVistoriaCommand.Execute;
+  FupdateVistoriaCommand.Execute(ARequestFilter);
+  if not FupdateVistoriaCommand.Parameters[4].Value.IsNull then
+  begin
+    FUnMarshal := TDSRestCommand(FupdateVistoriaCommand.Parameters[4].ConnectionHandler).GetJSONUnMarshaler;
+    try
+      Result := TVistoria(FUnMarshal.UnMarshal(FupdateVistoriaCommand.Parameters[4].Value.GetJSONValue(True)));
+      if FInstanceOwner then
+        FupdateVistoriaCommand.FreeOnExecute(Result);
+    finally
+      FreeAndNil(FUnMarshal)
+    end
+  end
+  else
+    Result := nil;
+end;
+
+function TsmVistoriaClient.updateVistoria_Cache(AIdPessoa: Integer; AIdImovel: Integer; AData: string; AObeservacao: string; const ARequestFilter: string): IDSRestCachedTVistoria;
+begin
+  if FupdateVistoriaCommand_Cache = nil then
+  begin
+    FupdateVistoriaCommand_Cache := FConnection.CreateCommand;
+    FupdateVistoriaCommand_Cache.RequestType := 'GET';
+    FupdateVistoriaCommand_Cache.Text := 'TsmVistoria.updateVistoria';
+    FupdateVistoriaCommand_Cache.Prepare(TsmVistoria_updateVistoria_Cache);
+  end;
+  FupdateVistoriaCommand_Cache.Parameters[0].Value.SetInt32(AIdPessoa);
+  FupdateVistoriaCommand_Cache.Parameters[1].Value.SetInt32(AIdImovel);
+  FupdateVistoriaCommand_Cache.Parameters[2].Value.SetWideString(AData);
+  FupdateVistoriaCommand_Cache.Parameters[3].Value.SetWideString(AObeservacao);
+  FupdateVistoriaCommand_Cache.ExecuteCache(ARequestFilter);
+  Result := TDSRestCachedTVistoria.Create(FupdateVistoriaCommand_Cache.Parameters[4].Value.GetString);
 end;
 
 procedure TsmVistoriaClient.acceptVistoria(AIdVistoria: Integer; AIdImovel: Integer; AIdPessoa: Integer; AData: string; AObservacao: string);
@@ -771,6 +822,7 @@ end;
 destructor TsmVistoriaClient.Destroy;
 begin
   FupdateVistoriaCommand.DisposeOf;
+  FupdateVistoriaCommand_Cache.DisposeOf;
   FacceptVistoriaCommand.DisposeOf;
   FcancelVistoriaCommand.DisposeOf;
   inherited;

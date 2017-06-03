@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,Item,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,Item,Vistoria,ItemVistoria,
   Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls,Client.Classes, Client.Module, System.json,
   Vcl.Grids, Vcl.DBGrids;
 
@@ -17,7 +17,7 @@ type
     edtCodigo: TEdit;
     lblData: TLabel;
     Label1: TLabel;
-    DateTimePicker1: TDateTimePicker;
+    dtpData: TDateTimePicker;
     edtObservacao: TEdit;
     lblObservacao: TLabel;
     dbcbbImovel: TDBComboBox;
@@ -41,22 +41,26 @@ type
     lblPessoa: TLabel;
     dbgrdItemVistoria: TDBGrid;
     btnAdd: TButton;
-    dsItem: TDataSource;
-    cdsItem: TClientDataSet;
-    intgrfldItemIdItem: TIntegerField;
-    strngfldItemdescricao: TStringField;
     dbcbbPessoa: TDBComboBox;
     dsItemGrid: TDataSource;
     cdsItemGrid: TClientDataSet;
     intgrfld1: TIntegerField;
     strngfld1: TStringField;
-    dbcbbItem: TDBComboBox;
     lblItem: TLabel;
+    btnGravar: TButton;
+    dbcbbItem: TDBComboBox;
+    cdsItem: TClientDataSet;
+    dsItem: TDataSource;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemDescricao: TStringField;
     procedure FormShow(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
   private
     procedure carregarComboPessoa();
     procedure carregarComboImovel();
     procedure carregarComboItem();
+    function getCompVistoria (): TVistoria;
   public
     procedure getAllImovel();
     procedure getAllPessoa();
@@ -73,8 +77,40 @@ var
 AImovelClient : TsmImovelClient;
 APessoaClient : TsmPessoaClient;
 AItemClient : TsmItemClient;
+VistoriaClient : TsmVistoriaClient;
+ItemVistoriaClient : TsmItemVistoriaClient;
 
 
+
+procedure TfrmVistoria.btnAddClick(Sender: TObject);
+var
+item : TItem;
+id : Integer;
+idTeste : char;
+begin
+    id := dbcbbItem.ItemIndex;
+    ShowMessageFmt('teste indice =%d ', [id]) ;
+    Id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
+
+    //item := TItem(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
+    cdsItem.InsertRecord([item.IdItem, item.Descricao]);
+
+end;
+
+procedure TfrmVistoria.btnGravarClick(Sender: TObject);
+var
+Vistoria : TVistoria;
+begin
+   try
+     VistoriaClient := TsmVistoriaClient.Create(ClientModule.dsConnection);
+     Vistoria := getCompVistoria;
+     Vistoria := VistoriaClient.updateVistoria(Vistoria.Pessoa.IdPessoa,Vistoria.Imovel.IdImovel,Vistoria.Data,Vistoria.Observacao);
+
+    finally
+      FreeAndNil(Vistoria);
+      FreeAndNil(VistoriaClient);
+    end;
+end;
 
 procedure TfrmVistoria.carregarComboImovel;
 begin
@@ -83,7 +119,7 @@ begin
       First;
       while not Eof do
       begin
-        dbcbbImovel.Items.AddObject(FindField('Logradouro').AsString, TObject(FindField('IdItem').AsInteger));
+        dbcbbImovel.Items.AddObject(FindField('Logradouro').AsString, TObject(FindField('IdImovel').AsInteger));
         Next;
       end;
     end;
@@ -91,7 +127,7 @@ end;
 
 procedure TfrmVistoria.carregarComboItem;
 begin
-   with cdsItem do
+  with cdsItem do
     begin
       First;
       while not Eof do
@@ -99,7 +135,6 @@ begin
         dbcbbItem.Items.AddObject(FindField('Descricao').AsString, TObject(FindField('IdItem').AsInteger));
         Next;
       end;
-
     end;
 end;
 
@@ -116,6 +151,8 @@ begin
 
     end;
 end;
+
+
 
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
@@ -202,6 +239,18 @@ begin
 end;
 
 
+
+function TfrmVistoria.getCompVistoria: TVistoria;
+var
+Vistoria : TVistoria;
+begin
+
+   Vistoria := TVistoria.Create;
+   Vistoria.Data := dtpData.ToString;
+   Vistoria.Observacao := edtObservacao.Text;
+   Result := Vistoria;
+end;
+
 procedure TfrmVistoria.getAllItem;
 var
   AItem: TItem;
@@ -210,7 +259,8 @@ var
 begin
   if not cdsItem.Active then
     cdsItem.CreateDataSet;
-    cdsItem.EmptyDataSet;
+
+  cdsItem.EmptyDataSet;
 
   AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
   try
@@ -224,7 +274,6 @@ begin
 
         cdsItem.InsertRecord([AItem.IdItem, AItem.Descricao]);
       finally
-
         AItem.Free;
       end;
     end;
