@@ -20,7 +20,6 @@ type
     DateTimePicker1: TDateTimePicker;
     edtObservacao: TEdit;
     lblObservacao: TLabel;
-    edtImovel: TEdit;
     dbcbbImovel: TDBComboBox;
     dsImovel: TDataSource;
     cdsImovel: TClientDataSet;
@@ -39,20 +38,25 @@ type
     strngfldPessoaNome: TStringField;
     dsPessoa: TDataSource;
     lblImovel: TLabel;
-    dbcbbPessoa: TDBComboBox;
     lblPessoa: TLabel;
-    edtPessoa: TEdit;
     dbgrdItemVistoria: TDBGrid;
-    dbcbbItem: TDBComboBox;
-    edtItem: TEdit;
     btnAdd: TButton;
     dsItem: TDataSource;
     cdsItem: TClientDataSet;
     intgrfldItemIdItem: TIntegerField;
     strngfldItemdescricao: TStringField;
+    dbcbbPessoa: TDBComboBox;
+    dsItemGrid: TDataSource;
+    cdsItemGrid: TClientDataSet;
+    intgrfld1: TIntegerField;
+    strngfld1: TStringField;
+    dbcbbItem: TDBComboBox;
+    lblItem: TLabel;
     procedure FormShow(Sender: TObject);
   private
-    { Private declarations }
+    procedure carregarComboPessoa();
+    procedure carregarComboImovel();
+    procedure carregarComboItem();
   public
     procedure getAllImovel();
     procedure getAllPessoa();
@@ -72,11 +76,55 @@ AItemClient : TsmItemClient;
 
 
 
+procedure TfrmVistoria.carregarComboImovel;
+begin
+  with cdsImovel do
+    begin
+      First;
+      while not Eof do
+      begin
+        dbcbbImovel.Items.AddObject(FindField('Logradouro').AsString, TObject(FindField('IdItem').AsInteger));
+        Next;
+      end;
+    end;
+end;
+
+procedure TfrmVistoria.carregarComboItem;
+begin
+   with cdsItem do
+    begin
+      First;
+      while not Eof do
+      begin
+        dbcbbItem.Items.AddObject(FindField('Descricao').AsString, TObject(FindField('IdItem').AsInteger));
+        Next;
+      end;
+
+    end;
+end;
+
+procedure TfrmVistoria.carregarComboPessoa;
+begin
+    with cdsPessoa do
+    begin
+      First;
+      while not Eof do
+      begin
+        dbcbbPessoa.Items.AddObject(FindField('Nome').AsString, TObject(FindField('IdPessoa').AsInteger));
+        Next;
+      end;
+
+    end;
+end;
+
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
   getAllImovel;
+  carregarComboImovel;
   getAllPessoa;
+  carregarComboPessoa;
   getAllItem;
+  carregarComboItem;
 end;
 
 procedure TfrmVistoria.getAllImovel;
@@ -102,6 +150,15 @@ begin
 
         cdsImovel.InsertRecord([AImovel.IdImovel, AImovel.Quadra, AImovel.Lote,AImovel.MetragemTerreno,
         AImovel.MetragemImovel,AImovel.Logradouro,AImovel.Bairro,AImovel.Complemento,AImovel.Numero,AImovel.Cep]);
+
+        // A como prefixo apenas para os parametro, para as variaveis nao se usa o "A", A = Argument
+        //dbcbbImovel.Items.Add(AImovel.Logradouro);
+        // A noite eu vejo isso com mais calma, aqui eu forcei adicionar na combo,
+        // ela teria q funcionar sozinha, tenho q relembrar como fazer isso
+        // por enquanto deixa assim, mesmo e da continuidade no processo de chamar
+        // o save da vistoria e dos itens. blza
+
+        //blz, qualquer coisa meu projeto esta no git vlw
       finally
         AImovel.Free;
       end;
@@ -120,7 +177,6 @@ var
 begin
   if not cdsPessoa.Active then
   cdsPessoa.CreateDataSet;
-
   cdsPessoa.EmptyDataSet;
   cdsPessoa.Last;
   APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
@@ -132,16 +188,15 @@ begin
       APessoa := TPessoa.Create;
       try
         APessoa := TPessoa.JSONToObject<TPessoa>(JArray.Get(i));
-
         cdsPessoa.InsertRecord([APessoa.IdPessoa, APessoa.Nome]);
 
       finally
+
         APessoa.Free;
       end;
     end;
-
+     cdsPessoa.First;
   finally
-    cdsPessoa.First;
     FreeAndNil(APessoaClient);
   end;
 end;
@@ -155,8 +210,7 @@ var
 begin
   if not cdsItem.Active then
     cdsItem.CreateDataSet;
-
-  cdsItem.EmptyDataSet;
+    cdsItem.EmptyDataSet;
 
   AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
   try
@@ -170,6 +224,7 @@ begin
 
         cdsItem.InsertRecord([AItem.IdItem, AItem.Descricao]);
       finally
+
         AItem.Free;
       end;
     end;

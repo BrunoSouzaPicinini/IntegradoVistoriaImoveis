@@ -71,7 +71,6 @@ begin
     finally
       FreeAndNil(APessoaClient);
     end;
-
 end;
 
 

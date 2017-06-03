@@ -32,12 +32,8 @@ object frmVistoria: TfrmVistoria
     ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 447
-    ExplicitHeight = 201
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object lblCodigo: TLabel
         Left = 24
         Top = 3
@@ -93,7 +89,7 @@ object frmVistoria: TfrmVistoria
         Left = 368
         Top = 22
         Width = 329
-        Height = 121
+        Height = 21
         TabOrder = 2
       end
       object edtImovel: TEdit
@@ -115,24 +111,13 @@ object frmVistoria: TfrmVistoria
         DataSource = dsImovel
         TabOrder = 3
       end
-      object dbcbbPessoa: TDBComboBox
-        Left = 24
-        Top = 122
-        Width = 249
-        Height = 21
-        Style = csDropDownList
-        BevelWidth = 10
-        DataField = 'Nome'
-        DataSource = dsPessoa
-        TabOrder = 5
-      end
       object edtPessoa: TEdit
         Left = 288
         Top = 122
         Width = 65
         Height = 21
         ReadOnly = True
-        TabOrder = 6
+        TabOrder = 5
         Visible = False
       end
       object dbgrdItemVistoria: TDBGrid
@@ -140,7 +125,8 @@ object frmVistoria: TfrmVistoria
         Top = 256
         Width = 673
         Height = 201
-        TabOrder = 7
+        DataSource = dsItemGrid
+        TabOrder = 6
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -154,7 +140,7 @@ object frmVistoria: TfrmVistoria
         Height = 21
         DataField = 'Descricao'
         DataSource = dsItem
-        TabOrder = 8
+        TabOrder = 7
       end
       object edtItem: TEdit
         Left = 288
@@ -162,7 +148,7 @@ object frmVistoria: TfrmVistoria
         Width = 65
         Height = 21
         ReadOnly = True
-        TabOrder = 9
+        TabOrder = 8
         Text = 'edtItem'
         Visible = False
       end
@@ -172,14 +158,43 @@ object frmVistoria: TfrmVistoria
         Width = 75
         Height = 25
         Caption = '+'
+        TabOrder = 9
+      end
+      object dbcbbPessoa: TDBComboBox
+        Left = 24
+        Top = 122
+        Width = 249
+        Height = 21
+        BevelWidth = 10
+        DataField = 'Nome'
+        DataSource = dsPessoa
         TabOrder = 10
+      end
+      object dblkcbbItem: TDBLookupComboBox
+        Left = 24
+        Top = 189
+        Width = 145
+        Height = 21
+        DataSource = dsItemGrid
+        KeyField = 'IdItem'
+        ListField = 'descricao'
+        ListSource = dsItem
+        TabOrder = 11
+      end
+      object dblkcbblogradouro: TDBLookupComboBox
+        Left = 224
+        Top = 168
+        Width = 145
+        Height = 21
+        DataField = 'logradouro'
+        DataSource = dsImovel
+        ListSource = dsImovel
+        TabOrder = 12
       end
     end
     object Consulta: TTabSheet
       Caption = 'Consulta'
       ImageIndex = 1
-      ExplicitWidth = 439
-      ExplicitHeight = 173
     end
   end
   object dsImovel: TDataSource
@@ -250,17 +265,35 @@ object frmVistoria: TfrmVistoria
   object dsItem: TDataSource
     DataSet = cdsItem
     Left = 532
-    Top = 208
+    Top = 176
   end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
     Left = 596
-    Top = 208
+    Top = 176
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
     end
     object strngfldItemdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 45
+    end
+  end
+  object dsItemGrid: TDataSource
+    DataSet = cdsItemGrid
+    Left = 540
+    Top = 408
+  end
+  object cdsItemGrid: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 604
+    Top = 408
+    object intgrfld1: TIntegerField
+      FieldName = 'IdItem'
+    end
+    object strngfld1: TStringField
       FieldName = 'descricao'
       Size = 45
     end
