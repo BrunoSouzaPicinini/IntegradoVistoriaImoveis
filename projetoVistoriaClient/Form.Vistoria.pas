@@ -131,11 +131,11 @@ begin
        ItemVistoria.Observacao  := cdsItemGrid.FieldByName('Observacao').AsString;
        ItemVistoriaClient.updateItemVistoria(
        ItemVistoria.Vistoria.IdVistoria,ItemVistoria.Item.IdItem,ItemVistoria.Observacao);
-        cdsItemGrid.Next;
+       cdsItemGrid.Next;
      end;
     finally
       FreeAndNil(Vistoria);
-      FreeAndNil(VistoriaClient);
+      FreeAndNil(ItemVistoria);
     end;
 end;
 
