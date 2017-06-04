@@ -32,7 +32,6 @@ object frmVistoria: TfrmVistoria
     ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 500
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
       ExplicitLeft = 8
@@ -125,7 +124,7 @@ object frmVistoria: TfrmVistoria
         Width = 673
         Height = 201
         DataSource = dsItemGrid
-        TabOrder = 6
+        TabOrder = 8
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -138,7 +137,7 @@ object frmVistoria: TfrmVistoria
         Width = 75
         Height = 25
         Caption = '+'
-        TabOrder = 5
+        TabOrder = 7
         OnClick = btnAddClick
       end
       object dbcbbPessoa: TDBComboBox
@@ -157,7 +156,7 @@ object frmVistoria: TfrmVistoria
         Width = 75
         Height = 25
         Caption = 'Gravar'
-        TabOrder = 7
+        TabOrder = 9
         OnClick = btnGravarClick
       end
       object dbcbbItem: TDBComboBox
@@ -168,20 +167,15 @@ object frmVistoria: TfrmVistoria
         BevelWidth = 10
         DataField = 'Descricao'
         DataSource = dsItem
-        TabOrder = 8
+        TabOrder = 5
       end
       object edtObservacaoItem: TEdit
         Left = 296
         Top = 168
         Width = 169
         Height = 21
-        TabOrder = 9
+        TabOrder = 6
       end
-    end
-    object Consulta: TTabSheet
-      Caption = 'Consulta'
-      ImageIndex = 1
-      ExplicitHeight = 472
     end
   end
   object dsImovel: TDataSource

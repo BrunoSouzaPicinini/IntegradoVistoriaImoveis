@@ -48,6 +48,7 @@ begin
   try
       APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
       APessoaClient.acceptPessoa(edtNome.Text ,StrToInt(edtCodigo.Text) );
+      ShowMessage('Alterado com sucesso');
     finally
       FreeAndNil(APessoaClient);
     end;
@@ -58,6 +59,7 @@ begin
   try
       APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
       APessoaClient.deleteUser(StrToInt(edtCodigo.Text) );
+      ShowMessage('Excluido com sucesso');
     finally
       FreeAndNil(APessoaClient);
     end;
@@ -68,6 +70,7 @@ begin
     try
       APessoaClient := TsmPessoaClient.Create(ClientModule.dsConnection);
       APessoaClient.updatePessoa(edtNome.Text);
+      ShowMessage('Gravado com sucesso');
     finally
       FreeAndNil(APessoaClient);
     end;

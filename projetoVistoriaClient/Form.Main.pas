@@ -12,11 +12,9 @@ type
     Cadastros1: TMenuItem;
     Financeiro1: TMenuItem;
     Vistoria1: TMenuItem;
-    Usurio1: TMenuItem;
     Pessoa1: TMenuItem;
     Imvel1: TMenuItem;
     Item1: TMenuItem;
-    procedure Usurio1Click(Sender: TObject);
     procedure Pessoa1Click(Sender: TObject);
     procedure Item1Click(Sender: TObject);
     procedure Imvel1Click(Sender: TObject);
@@ -92,21 +90,6 @@ if not Assigned(frmPessoa) then
   end;
 end;
 
-procedure TfrmMain.Usurio1Click(Sender: TObject);
-begin
-  if not Assigned(frmUser) then
-    Application.CreateForm(TfrmUser, frmUser);
-
-  with frmUser do
-  begin
-      try
-        ShowModal;
-      finally
-        Free;
-        frmUser := nil;
-      end;
-  end;
-end;
 
 procedure TfrmMain.Vistoria1Click(Sender: TObject);
 begin

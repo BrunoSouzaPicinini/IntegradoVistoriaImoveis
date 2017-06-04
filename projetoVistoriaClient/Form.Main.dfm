@@ -22,10 +22,6 @@ object frmMain: TfrmMain
     Top = 56
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
-      object Usurio1: TMenuItem
-        Caption = 'Usu'#225'rio'
-        OnClick = Usurio1Click
-      end
       object Pessoa1: TMenuItem
         Caption = 'Pessoa'
         OnClick = Pessoa1Click

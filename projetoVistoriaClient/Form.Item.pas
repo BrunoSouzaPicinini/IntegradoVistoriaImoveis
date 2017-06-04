@@ -48,6 +48,7 @@ begin
   try
       AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
       AItemClient.acceptItem(edtNome.Text ,StrToInt(edtCodigo.Text) );
+      ShowMessage('Alterado com sucesso');
     finally
       FreeAndNil(AItemClient);
     end;
@@ -58,6 +59,7 @@ begin
     try
       AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
       AItemClient.deleteItem(StrToInt(edtCodigo.Text) );
+      ShowMessage('Excluido com sucesso');
     finally
       FreeAndNil(AItemClient);
     end;
@@ -68,6 +70,7 @@ begin
     try
       AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
       AItemClient.updateItem(edtNome.Text);
+      ShowMessage('Gravado com sucesso');
     finally
       FreeAndNil(AItemClient);
     end;

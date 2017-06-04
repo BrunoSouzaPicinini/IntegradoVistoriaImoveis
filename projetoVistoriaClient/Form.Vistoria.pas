@@ -12,7 +12,6 @@ type
   TfrmVistoria = class(TForm)
     pgcVistoria: TPageControl;
     tsCadastro: TTabSheet;
-    Consulta: TTabSheet;
     lblCodigo: TLabel;
     edtCodigo: TEdit;
     lblData: TLabel;
@@ -87,15 +86,10 @@ ItemVistoriaClient : TsmItemVistoriaClient;
 
 procedure TfrmVistoria.btnAddClick(Sender: TObject);
 var
-item : TItem;
-objeto : TObject;
 id : Integer;
-IndexDef: TindexDefs;
-jaAdicionado : Boolean;
-
 begin
 
-    id := dbcbbItem.ItemIndex;
+
     Id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
     //ShowMessageFmt('IdItem =%d ', [id]) ;
     //ShowMessage(dbcbbItem.Text);
@@ -103,6 +97,7 @@ begin
     cdsItemGrid.InsertRecord([Id , dbcbbItem.Text, edtObservacaoItem.Text]);
 
 end;
+
 
 procedure TfrmVistoria.btnGravarClick(Sender: TObject);
 var
@@ -133,6 +128,7 @@ begin
        ItemVistoria.Vistoria.IdVistoria,ItemVistoria.Item.IdItem,ItemVistoria.Observacao);
        cdsItemGrid.Next;
      end;
+     ShowMessage('Gravado com sucesso');
     finally
       FreeAndNil(Vistoria);
       FreeAndNil(ItemVistoria);

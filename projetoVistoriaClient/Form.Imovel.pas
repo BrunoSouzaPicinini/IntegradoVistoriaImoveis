@@ -74,6 +74,7 @@ begin
       AImovelClient.acceptImovel(StrToInt(edtCodigo.Text),edtQuadra.Text,edtLote.Text,
       edtLogradouro.Text,edtBairro.Text,edtComplemento.Text,edtCep.Text,
       StrToFloat(edtMetragemTerreno.Text),StrToFloat(edtMetragemImovel.Text),StrToInt(edtNumero.Text) );
+      ShowMessage('Alterado com sucesso');
     finally
       FreeAndNil(AImovelClient);
     end;
@@ -84,6 +85,7 @@ begin
   try
       AImovelClient := TsmImovelClient.Create(ClientModule.dsConnection);
       AImovelClient.cancelImovel(StrToInt(edtCodigo.Text) );
+      ShowMessage('Excluido com sucesso');
     finally
       FreeAndNil(AImovelClient);
     end;
@@ -97,6 +99,7 @@ begin
       edtLogradouro.Text,edtBairro.Text,edtComplemento.Text,edtCep.Text,
       StrToFloat(edtMetragemTerreno.Text),StrToFloat(edtMetragemImovel.Text),
       StrToInt(edtNumero.Text) );
+      ShowMessage('Gravado com sucesso');
     finally
       FreeAndNil(AImovelClient);
     end;

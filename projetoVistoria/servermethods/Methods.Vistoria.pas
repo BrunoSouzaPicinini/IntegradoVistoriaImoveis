@@ -40,10 +40,11 @@ begin
   try
     try
       Dao := TVistoriaDao.Create;
+      Vistoria := TVistoria.Create;
       Vistoria := Dao.Read(AIdVistoria);
       TVistoriaBo.Update(Vistoria, AIdImovel, AIdPessoa, AData, AObservacao);
       Dao.Save(Vistoria);
-      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCESS_ACCEPTED;
+      GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do
       begin
