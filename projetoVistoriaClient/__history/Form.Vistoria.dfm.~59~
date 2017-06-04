@@ -35,7 +35,8 @@ object frmVistoria: TfrmVistoria
     ExplicitHeight = 500
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitHeight = 472
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object lblCodigo: TLabel
         Left = 24
         Top = 3
@@ -85,7 +86,7 @@ object frmVistoria: TfrmVistoria
         Height = 21
         TabOrder = 0
       end
-      object DateTimePicker1: TDateTimePicker
+      object dtpData: TDateTimePicker
         Left = 180
         Top = 22
         Width = 173
@@ -113,11 +114,11 @@ object frmVistoria: TfrmVistoria
       end
       object dbgrdItemVistoria: TDBGrid
         Left = 24
-        Top = 200
+        Top = 197
         Width = 673
         Height = 201
         DataSource = dsItemGrid
-        TabOrder = 7
+        TabOrder = 6
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -130,7 +131,7 @@ object frmVistoria: TfrmVistoria
         Width = 75
         Height = 25
         Caption = '+'
-        TabOrder = 6
+        TabOrder = 5
         OnClick = btnAddClick
       end
       object dbcbbPessoa: TDBComboBox
@@ -143,14 +144,24 @@ object frmVistoria: TfrmVistoria
         DataSource = dsPessoa
         TabOrder = 4
       end
+      object btnGravar: TButton
+        Left = 24
+        Top = 424
+        Width = 75
+        Height = 25
+        Caption = 'Gravar'
+        TabOrder = 7
+        OnClick = btnGravarClick
+      end
       object dbcbbItem: TDBComboBox
         Left = 24
         Top = 168
         Width = 249
         Height = 21
-        DataField = 'descricao'
+        BevelWidth = 10
+        DataField = 'Descricao'
         DataSource = dsItem
-        TabOrder = 5
+        TabOrder = 8
       end
     end
     object Consulta: TTabSheet
@@ -224,40 +235,33 @@ object frmVistoria: TfrmVistoria
     Left = 432
     Top = 112
   end
-  object dsItem: TDataSource
-    DataSet = cdsItem
-    Left = 436
-    Top = 176
-  end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 500
-    Top = 176
+    Left = 384
+    Top = 160
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
     end
-    object strngfldItemdescricao: TStringField
-      FieldName = 'descricao'
+    object strngfldItemDescricao: TStringField
+      FieldName = 'Descricao'
       Size = 45
     end
   end
-  object dsItemGrid: TDataSource
-    DataSet = cdsItemGrid
-    Left = 548
-    Top = 328
+  object dsItem: TDataSource
+    DataSet = cdsItem
+    Left = 432
+    Top = 160
   end
   object cdsItemGrid: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 604
-    Top = 328
-    object intgrfld1: TIntegerField
-      FieldName = 'IdItem'
-    end
-    object strngfld1: TStringField
-      FieldName = 'descricao'
-      Size = 45
-    end
+    Left = 572
+    Top = 280
+  end
+  object dsItemGrid: TDataSource
+    DataSet = cdsItemGrid
+    Left = 452
+    Top = 280
   end
 end

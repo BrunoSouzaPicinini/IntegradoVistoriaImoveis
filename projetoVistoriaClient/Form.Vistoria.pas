@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,Item,Vistoria,ItemVistoria,
   Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls,Client.Classes, Client.Module, System.json,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
 
 type
   TfrmVistoria = class(TForm)
@@ -42,10 +42,6 @@ type
     dbgrdItemVistoria: TDBGrid;
     btnAdd: TButton;
     dbcbbPessoa: TDBComboBox;
-    dsItemGrid: TDataSource;
-    cdsItemGrid: TClientDataSet;
-    intgrfld1: TIntegerField;
-    strngfld1: TStringField;
     lblItem: TLabel;
     btnGravar: TButton;
     dbcbbItem: TDBComboBox;
@@ -53,6 +49,10 @@ type
     dsItem: TDataSource;
     intgrfldItemIdItem: TIntegerField;
     strngfldItemDescricao: TStringField;
+    cdsItemGrid: TClientDataSet;
+    dsItemGrid: TDataSource;
+    intgrfldItemGridIdItem: TIntegerField;
+    strngfldItemGridDescricao: TStringField;
     procedure FormShow(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -85,15 +85,23 @@ ItemVistoriaClient : TsmItemVistoriaClient;
 procedure TfrmVistoria.btnAddClick(Sender: TObject);
 var
 item : TItem;
+objeto : TObject;
 id : Integer;
-idTeste : char;
-begin
-    id := dbcbbItem.ItemIndex;
-    ShowMessageFmt('teste indice =%d ', [id]) ;
-    Id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
+IndexDef: TindexDefs;
+jaAdicionado : Boolean;
 
-    //item := TItem(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
-    cdsItem.InsertRecord([item.IdItem, item.Descricao]);
+begin
+
+    id := dbcbbItem.ItemIndex;
+    Id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
+    //ShowMessageFmt('IdItem =%d ', [id]) ;
+    //ShowMessage(dbcbbItem.Text);
+
+    cdsItemGrid.InsertRecord([Id , dbcbbItem.Text]);
+
+
+
+
 
 end;
 
@@ -154,6 +162,8 @@ end;
 
 
 
+
+
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
   getAllImovel;
@@ -162,6 +172,8 @@ begin
   carregarComboPessoa;
   getAllItem;
   carregarComboItem;
+  cdsItemGrid.CreateDataSet;
+  cdsItemGrid.EmptyDataSet;
 end;
 
 procedure TfrmVistoria.getAllImovel;

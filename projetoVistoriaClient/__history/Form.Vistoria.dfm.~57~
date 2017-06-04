@@ -114,10 +114,9 @@ object frmVistoria: TfrmVistoria
       end
       object dbgrdItemVistoria: TDBGrid
         Left = 24
-        Top = 200
+        Top = 197
         Width = 673
         Height = 201
-        DataSource = dsItemGrid
         TabOrder = 6
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -153,13 +152,15 @@ object frmVistoria: TfrmVistoria
         TabOrder = 7
         OnClick = btnGravarClick
       end
-      object cbbItem: TComboBox
+      object dbcbbItem: TDBComboBox
         Left = 24
         Top = 168
-        Width = 145
+        Width = 249
         Height = 21
+        BevelWidth = 10
+        DataField = 'Descricao'
+        DataSource = dsItem
         TabOrder = 8
-        Text = 'cbbItem'
       end
     end
     object Consulta: TTabSheet
@@ -233,39 +234,39 @@ object frmVistoria: TfrmVistoria
     Left = 432
     Top = 112
   end
-  object dsItem: TDataSource
-    DataSet = cdsItem
-    Left = 436
-    Top = 176
-  end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 500
-    Top = 176
+    Left = 384
+    Top = 160
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
     end
-    object strngfldItemdescricao: TStringField
-      FieldName = 'descricao'
+    object strngfldItemDescricao: TStringField
+      FieldName = 'Descricao'
       Size = 45
     end
   end
+  object dsItem: TDataSource
+    DataSet = cdsItem
+    Left = 432
+    Top = 160
+  end
   object dsItemGrid: TDataSource
     DataSet = cdsItemGrid
-    Left = 548
-    Top = 328
+    Left = 512
+    Top = 280
   end
   object cdsItemGrid: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 604
-    Top = 328
-    object intgrfld1: TIntegerField
+    Left = 600
+    Top = 280
+    object IntegerField1: TIntegerField
       FieldName = 'IdItem'
     end
-    object strngfld1: TStringField
-      FieldName = 'descricao'
+    object StringField1: TStringField
+      FieldName = 'Descricao'
       Size = 45
     end
   end

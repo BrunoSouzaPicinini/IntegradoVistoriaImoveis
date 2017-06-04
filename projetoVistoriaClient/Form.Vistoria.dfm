@@ -114,7 +114,7 @@ object frmVistoria: TfrmVistoria
       end
       object dbgrdItemVistoria: TDBGrid
         Left = 24
-        Top = 200
+        Top = 197
         Width = 673
         Height = 201
         DataSource = dsItemGrid
@@ -235,29 +235,11 @@ object frmVistoria: TfrmVistoria
     Left = 432
     Top = 112
   end
-  object dsItemGrid: TDataSource
-    DataSet = cdsItemGrid
-    Left = 548
-    Top = 328
-  end
-  object cdsItemGrid: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 604
-    Top = 328
-    object intgrfld1: TIntegerField
-      FieldName = 'IdItem'
-    end
-    object strngfld1: TStringField
-      FieldName = 'descricao'
-      Size = 45
-    end
-  end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 496
-    Top = 184
+    Left = 384
+    Top = 160
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
     end
@@ -269,6 +251,24 @@ object frmVistoria: TfrmVistoria
   object dsItem: TDataSource
     DataSet = cdsItem
     Left = 432
-    Top = 184
+    Top = 160
+  end
+  object cdsItemGrid: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 572
+    Top = 280
+    object intgrfldItemGridIdItem: TIntegerField
+      FieldName = 'IdItem'
+    end
+    object strngfldItemGridDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 45
+    end
+  end
+  object dsItemGrid: TDataSource
+    DataSet = cdsItemGrid
+    Left = 452
+    Top = 280
   end
 end

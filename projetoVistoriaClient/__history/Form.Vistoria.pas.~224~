@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Imovel,Pessoa,Item,Vistoria,ItemVistoria,
   Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls,Client.Classes, Client.Module, System.json,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
 
 type
   TfrmVistoria = class(TForm)
@@ -41,18 +41,18 @@ type
     lblPessoa: TLabel;
     dbgrdItemVistoria: TDBGrid;
     btnAdd: TButton;
-    dsItem: TDataSource;
-    cdsItem: TClientDataSet;
-    intgrfldItemIdItem: TIntegerField;
-    strngfldItemdescricao: TStringField;
     dbcbbPessoa: TDBComboBox;
-    dsItemGrid: TDataSource;
-    cdsItemGrid: TClientDataSet;
-    intgrfld1: TIntegerField;
-    strngfld1: TStringField;
-    dbcbbItem: TDBComboBox;
     lblItem: TLabel;
     btnGravar: TButton;
+    dbcbbItem: TDBComboBox;
+    cdsItem: TClientDataSet;
+    dsItem: TDataSource;
+    intgrfldItemIdItem: TIntegerField;
+    strngfldItemDescricao: TStringField;
+    cdsItemGrid: TClientDataSet;
+    dsItemGrid: TDataSource;
+    intgrfldItemGridIdItem: TIntegerField;
+    strngfldItemGridDescricao: TStringField;
     procedure FormShow(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -85,14 +85,27 @@ ItemVistoriaClient : TsmItemVistoriaClient;
 procedure TfrmVistoria.btnAddClick(Sender: TObject);
 var
 item : TItem;
+objeto : TObject;
 id : Integer;
-idTeste : string;
+IndexDef: TindexDefs;
+jaAdicionado : Boolean;
+
 begin
-    id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
-    idTeste := Integer.ToString(id);
-    ShowMessage('teste indice = '+idTeste) ;
-    //item := TItem(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
-    cdsItem.InsertRecord([item.IdItem, item.Descricao]);
+    jaAdicionado := False;
+    id := dbcbbItem.ItemIndex;
+    Id := Integer(dbcbbItem.Items.Objects[dbcbbItem.ItemIndex]);
+    //ShowMessageFmt('IdItem =%d ', [id]) ;
+    //ShowMessage(dbcbbItem.Text);
+    while cdsItemGrid.Eof or not(jaAdicionado) and not cdsItemGrid.IsEmpty do
+    begin
+      if Id = Integer(cdsItemGrid.FieldByName('IdItem')) then  jaAdicionado := True;
+    end;
+    if jaAdicionado = false then
+    cdsItemGrid.InsertRecord([Id , dbcbbItem.Text]);
+
+
+
+
 
 end;
 
@@ -126,15 +139,14 @@ end;
 
 procedure TfrmVistoria.carregarComboItem;
 begin
-   with cdsItem do
+  with cdsItem do
     begin
-      Last;
+      First;
       while not Eof do
       begin
         dbcbbItem.Items.AddObject(FindField('Descricao').AsString, TObject(FindField('IdItem').AsInteger));
         Next;
       end;
-      First;
     end;
 end;
 
@@ -152,6 +164,10 @@ begin
     end;
 end;
 
+
+
+
+
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
   getAllImovel;
@@ -160,6 +176,8 @@ begin
   carregarComboPessoa;
   getAllItem;
   carregarComboItem;
+  cdsItemGrid.CreateDataSet;
+  cdsItemGrid.EmptyDataSet;
 end;
 
 procedure TfrmVistoria.getAllImovel;
@@ -257,7 +275,8 @@ var
 begin
   if not cdsItem.Active then
     cdsItem.CreateDataSet;
-    cdsItem.EmptyDataSet;
+
+  cdsItem.EmptyDataSet;
 
   AItemClient := TsmItemClient.Create(ClientModule.dsConnection);
   try
@@ -271,7 +290,6 @@ begin
 
         cdsItem.InsertRecord([AItem.IdItem, AItem.Descricao]);
       finally
-
         AItem.Free;
       end;
     end;
