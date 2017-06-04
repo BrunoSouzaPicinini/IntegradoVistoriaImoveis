@@ -55,7 +55,7 @@ begin
   Con := TConnection.GetConnection;
   QueryString :=
     Format('INSERT INTO aula.movitemvistoria (idvistoria, iditem, observacao) '
-    + 'values (''%d'', ''%d'', ''%s'') RETURNING id',
+    + 'values (''%d'', ''%d'', ''%s'') RETURNING idItemVistoria',
     [AItemVistoria.Vistoria.Idvistoria, AItemVistoria.Item.IdItem,
     AItemVistoria.Observacao]);
 
@@ -120,7 +120,7 @@ var
   QueryString: string;
 begin
   Con := TConnection.GetConnection;
-  QueryString := Format('UPDATE aula.movitemvistoria SET idvistoria = ''%d'','
+  QueryString := Format('UPDATE aula.movitemvistoria SET idvistoria = ''%d'', '
     + ' iditem = ''%d'', observacao = ''%s'' WHERE iditemvistoria = ''%d'' ',
     [AItemVistoria.Vistoria.IdVistoria, AItemVistoria.Item.IdItem,
     AItemVistoria.Observacao, AItemVistoria.IdItemVistoria]);

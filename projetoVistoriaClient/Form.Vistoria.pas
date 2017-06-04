@@ -52,7 +52,10 @@ type
     cdsItemGrid: TClientDataSet;
     dsItemGrid: TDataSource;
     intgrfldItemGridIdItem: TIntegerField;
+    edtObservacaoItem: TEdit;
+    lblObsItem: TLabel;
     strngfldItemGridDescricao: TStringField;
+    strngfldItemGridObservacao: TStringField;
     procedure FormShow(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -97,23 +100,39 @@ begin
     //ShowMessageFmt('IdItem =%d ', [id]) ;
     //ShowMessage(dbcbbItem.Text);
 
-    cdsItemGrid.InsertRecord([Id , dbcbbItem.Text]);
-
-
-
-
+    cdsItemGrid.InsertRecord([Id , dbcbbItem.Text, edtObservacaoItem.Text]);
 
 end;
 
 procedure TfrmVistoria.btnGravarClick(Sender: TObject);
 var
+Item : TItem;
 Vistoria : TVistoria;
+ItemVistoria : TItemVistoria;
 begin
    try
      VistoriaClient := TsmVistoriaClient.Create(ClientModule.dsConnection);
+     Vistoria := TVistoria.Create;
      Vistoria := getCompVistoria;
-     Vistoria := VistoriaClient.updateVistoria(Vistoria.Pessoa.IdPessoa,Vistoria.Imovel.IdImovel,Vistoria.Data,Vistoria.Observacao);
 
+     Vistoria := VistoriaClient.updateVistoria(
+     Vistoria.Pessoa.IdPessoa,
+     Vistoria.Imovel.IdImovel,Vistoria.Data,Vistoria.Observacao);
+
+     ItemVistoriaClient := TsmItemVistoriaClient.Create(ClientModule.dsConnection);
+     cdsItemGrid.First;
+     while not cdsItemGrid.EOF do
+     begin
+       ItemVistoria := TItemVistoria.Create;
+       Item := TItem.Create;
+       Item.IdItem := Integer(cdsItemGrid.FieldByName('IdItem').Value);
+       ItemVistoria.Item := Item;
+       ItemVistoria.Vistoria := Vistoria;
+       ItemVistoria.Observacao  := cdsItemGrid.FieldByName('Observacao').AsString;
+       ItemVistoriaClient.updateItemVistoria(
+       ItemVistoria.Vistoria.IdVistoria,ItemVistoria.Item.IdItem,ItemVistoria.Observacao);
+        cdsItemGrid.Next;
+     end;
     finally
       FreeAndNil(Vistoria);
       FreeAndNil(VistoriaClient);
@@ -159,10 +178,6 @@ begin
 
     end;
 end;
-
-
-
-
 
 procedure TfrmVistoria.FormShow(Sender: TObject);
 begin
@@ -217,7 +232,6 @@ begin
   end;
 end;
 
-
 procedure TfrmVistoria.getAllPessoa;
 var
   APessoa: TPessoa;
@@ -252,13 +266,24 @@ end;
 
 
 
-function TfrmVistoria.getCompVistoria: TVistoria;
+function TfrmVistoria.getCompVistoria (): TVistoria;
 var
+Pessoa : TPessoa;
+Imovel : TImovel;
 Vistoria : TVistoria;
 begin
 
+
+   Pessoa := TPessoa.Create;
+   Pessoa.IdPessoa := Integer(dbcbbPessoa.Items.Objects[dbcbbPessoa.ItemIndex]);
+   Pessoa.Nome := dbcbbPessoa.Text;
+   Imovel := TImovel.Create;
+   Imovel.IdImovel := Integer(dbcbbImovel.Items.Objects[dbcbbImovel.ItemIndex]);
+   Imovel.Logradouro := dbcbbImovel.Text;
    Vistoria := TVistoria.Create;
-   Vistoria.Data := dtpData.ToString;
+   Vistoria.Pessoa := Pessoa;
+   Vistoria.Imovel := Imovel;
+   Vistoria.Data := datetostr(dtpData.Date);
    Vistoria.Observacao := edtObservacao.Text;
    Result := Vistoria;
 end;

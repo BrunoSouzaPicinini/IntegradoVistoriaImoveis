@@ -79,6 +79,13 @@ object frmVistoria: TfrmVistoria
         Height = 13
         Caption = 'Item'
       end
+      object lblObsItem: TLabel
+        Left = 296
+        Top = 152
+        Width = 48
+        Height = 13
+        Caption = 'Obs. Item'
+      end
       object edtCodigo: TEdit
         Left = 24
         Top = 22
@@ -126,7 +133,7 @@ object frmVistoria: TfrmVistoria
         TitleFont.Style = []
       end
       object btnAdd: TButton
-        Left = 295
+        Left = 487
         Top = 166
         Width = 75
         Height = 25
@@ -163,6 +170,13 @@ object frmVistoria: TfrmVistoria
         DataSource = dsItem
         TabOrder = 8
       end
+      object edtObservacaoItem: TEdit
+        Left = 296
+        Top = 168
+        Width = 169
+        Height = 21
+        TabOrder = 9
+      end
     end
     object Consulta: TTabSheet
       Caption = 'Consulta'
@@ -172,14 +186,14 @@ object frmVistoria: TfrmVistoria
   end
   object dsImovel: TDataSource
     DataSet = cdsImovel
-    Left = 428
-    Top = 64
+    Left = 604
+    Top = 72
   end
   object cdsImovel: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 500
-    Top = 64
+    Left = 660
+    Top = 72
     object intgrfldImovelIdImovel: TIntegerField
       FieldName = 'IdImovel'
     end
@@ -220,7 +234,7 @@ object frmVistoria: TfrmVistoria
   object cdsPessoa: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 496
+    Left = 664
     Top = 112
     object intgrfldPessoaIdPessoa: TIntegerField
       FieldName = 'IdPessoa'
@@ -232,13 +246,13 @@ object frmVistoria: TfrmVistoria
   end
   object dsPessoa: TDataSource
     DataSet = cdsPessoa
-    Left = 432
+    Left = 600
     Top = 112
   end
   object cdsItem: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 384
+    Left = 664
     Top = 160
     object intgrfldItemIdItem: TIntegerField
       FieldName = 'IdItem'
@@ -250,7 +264,7 @@ object frmVistoria: TfrmVistoria
   end
   object dsItem: TDataSource
     DataSet = cdsItem
-    Left = 432
+    Left = 600
     Top = 160
   end
   object cdsItemGrid: TClientDataSet
@@ -263,6 +277,10 @@ object frmVistoria: TfrmVistoria
     end
     object strngfldItemGridDescricao: TStringField
       FieldName = 'Descricao'
+      Size = 45
+    end
+    object strngfldItemGridObservacao: TStringField
+      FieldName = 'Observacao'
       Size = 45
     end
   end

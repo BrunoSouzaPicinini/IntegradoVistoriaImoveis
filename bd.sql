@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS aula.cadItem (
   
 CREATE TABLE aula.movItemVistoria (
   idItemVistoria SERIAL,
-  idImovel INT NOT NULL,
+  idVistoria INT NOT NULL,
   idItem INT NOT NULL,
   observacao VARCHAR(45) NULL,
   PRIMARY KEY (idItemVistoria),
-  CONSTRAINT un_itensVistoria UNIQUE (idImovel, idItem),
+  CONSTRAINT un_itensVistoria UNIQUE (idVistoria, idItem),
   CONSTRAINT fk_movVistoria_has_cadItem_movVistoria1
-    FOREIGN KEY (idImovel)
+    FOREIGN KEY (idVistoria)
     REFERENCES aula.movVistoria (idVistoria),
   CONSTRAINT fk_movVistoria_has_cadItem_cadItem1
     FOREIGN KEY (idItem)

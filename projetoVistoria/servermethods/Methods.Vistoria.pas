@@ -86,6 +86,7 @@ begin
     try
       Dao := TVistoriaDao.Create;
       Vistoria := Dao.Save(TVistoriaBo.Create( AIdImovel,AIdPessoa, AData, AObeservacao));
+      Result := Vistoria;
       GetInvocationMetadata().ResponseCode := HttpStatusCode.SUCCESS_CREATED_RESOURCE;
     except
       on e: Exception do

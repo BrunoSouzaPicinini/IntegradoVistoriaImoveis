@@ -29,6 +29,7 @@ implementation
 
 constructor TVistoria.Create;
 begin
+  inherited;
   FPessoa := TPessoa.Create;
   FImovel := TImovel.Create;
 end;
